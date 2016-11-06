@@ -1,5 +1,5 @@
-Article Title - https://askjdhfshfknf;blahblah
 
+Stylistic Structures: An Initial Investigation of the Stochastic Generation of Tonal Music:
 https://www.researchgate.net/profile/William_Birmingham/publication/237432599_Stylistic_Structures_An_Initial_Investigation_of_the_Stochastic_Generation_of_Tonal_Music/links/00b7d5294b677dcf87000000.pdf
 
 http://metacreation.net/wp-content/uploads/2014/09/Controlled_Markov_Selection_2010.pdf
