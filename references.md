@@ -16,3 +16,5 @@ https://www.researchgate.net/profile/Michael_Jordan13/publication/2442128_Hidden
 
 Discriminative training of hidden Markov models for multiple pitch tracking:
 http://ieeexplore.ieee.org/document/1416347/
+
+Towards a generative syntax MIT - http://web.mit.edu/jikatz/Public/MusLangGroup/Reductions/Rohrmeier2011.pdf
