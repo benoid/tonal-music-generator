@@ -6,7 +6,7 @@ David Benoit and Brian Chiang
 ## Problem Statement
 This project will explore the problem domain of the generation tonal music.  In particular, it will focus on generating music which follows the harmonic and contrapuntal rules developed by the music theorist Heinrich Schenker.
 
-It is interesting because such a system can "[make] choices related to style, harmony,rhythm or any musical attribute." [1].  This project will employ Markov Decision Processes, because they have a history of use in computational music models, are easy to adapt to different styles of music[2]. We will also explore the use of context-free grammars in the generation of musical excerpts, as context-free grammar algorithms have been proposed as likely to be successful in generating music[3, 4].
+It is interesting because such a system can "[make] choices related to style, harmony,rhythm or any musical attribute." [1].  This project will employ Markov Decision Processes, because they have a history of use in computational music models, and are easy to adapt to different styles of music[2]. We will also explore the use of context-free grammars in the generation of musical excerpts, as context-free grammar algorithms have been proposed as likely to be successful in generating music[3, 4].
 
 
 ## Problem Analysis
