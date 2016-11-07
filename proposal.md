@@ -17,7 +17,7 @@ The total state space of a musical exerpt is comprised of the number of voices (
 
 Because of the consistent structure of tonal music, there are optimizations available to significantly shrink the state space in order to improve the performance of a generative algorithm.  The most important optimization will procede with the idea that tonal harmony is equivalent to a context-free language[3, 4].  As such, the harmonic structure of the piece will be generated beforehand using a context-free grammar based generative algorithm.  This will shrink the state space to only be concerned with the notes in the given harmony of the state.  Therefore the final state space this program will be concerned with is the number of voices (v), the available notes in the current harmony of each voice (h < r), and the total possible beat values for each note (b), or O(vbh).
 
-Each state will be represented as a set of notes, and the given harmony. 
+Each state will be represented as a set of notes, and the given harmony. One tick of the state space clock will be equivalent to one music beat in time.
 
 
 ### State Transition Function
