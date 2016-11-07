@@ -1,6 +1,8 @@
 
 # Markov Decision in Tonal Music
 
+David Benoit and Brian Chiang
+
 ## Problem Statement
 This project will explore the problem domain of the generation tonal music.  In particular, it will focus on generating music which follows the harmonic and contrapuntal rules developed by the music theorist Heinrich Schenker.
 
@@ -40,11 +42,10 @@ By the end of the project, we will have a system which, given a numeric seed and
 We will know if we are successful if the excerpt successfully passes a Schenkerian Analysis.
 
 ## References
-[1]http://www.ee.usyd.edu.au/carlab/CARlabPublicationsData/PDF/2010%20Martin%20In%20International%20Computer%20Music%20Conference-3237008059/2010%20Martin%20In%20International%20Computer%20Music%20Conference.pdf
+[1] Aengus Martin, Craig Jin, Andre van Schaik, William L. Martens. PARTIALLY OBSERVABLE MARKOV DECISION PROCESSES FOR INTERACTIVE MUSIC SYSTEMS (p. 490). Sydney University, NSW 2006, Australia (2016)
 
-[2]http://metacreation.net/wp-content/uploads/2014/09/Controlled_Markov_Selection_2010.pdf
+[2]  Arne Eigenfeldt and Philippe Pasquier. Realtime Generation of Harmonic Progressions Using Controlled Markov Selection (p. 2). Simon Fraser University, Canada
 
-[3]http://www.ee.usyd.edu.au/carlab/CARlabPublicationsData/PDF/2010%20Martin%20In%20International%20Computer%20Music%20Conference-3237008059/2010%20Martin%20In%20International%20Computer%20Music%20Conference.pdf
+[3] Bradley J. Clement. Learning Harmonic Progression Using Markov Models (p. 11) http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.52.3015&rep=rep1&type=pdf
 
-[4]http://web.mit.edu/jikatz/Public/MusLangGroup/Reductions/Rohrmeier2011.pdf
-
+[4] Martin Rohrmeier. Towards a generative syntax of tonal harmony (p. 2). Journal of Mathematics and Music Vol. 5, No. 1, March 2011, 35–53
