@@ -30,10 +30,11 @@ The system will have a function which checks whether the counterpoint is correct
 
 ### Other Problem Representation Paramaters
 
-The problem is fully observeable, multi-agent, deterministic, sequential, and discrete.
+The problem is fully observeable, because the agent can see all possible states, as well as the harmonic progression.
+It is multi-agent, as discussed in the State Transition Function section.  It is deterministic, because there is no randomness involved.  It issequential, because previous states are considered when deciding the next state.  It is discrete, because the set of all possible states is a countable set.
 
 ## Data Set and Source Materials
-We will be creating our own data set from a simulation we build.
+We will be creating our own data set from a simulation we build.  The generation algorithm will produce a musical excerpt and it will learn from the evaluation function.
 
 ## Deliverable and Demonstration
 By the end of the project, we will have a system which, given a numeric seed and parameters such as length, will generate an excerpt of authentic sounding tonal music.
