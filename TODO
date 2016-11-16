@@ -1,0 +1,17 @@
+
+### Goals for Milestone 1
+
+* State representation
+  * Chord Progression
+  * List of voices
+    * Each voice has a list of notes
+  * State value
+  
+* State transition/ policy
+  * function (current state, list of adjacent states)
+      * pick a state
+      * update the current state value based 
+        on analysis function reward/penalty
+      * return the next state
+
+* Port harmony functions to new library  
