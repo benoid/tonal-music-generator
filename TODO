@@ -3,9 +3,13 @@
 
 * State representation
   * Chord Progression
+    * list of symbols
   * List of voices
-    * Each voice has a list of notes
+    * Voices = Instrument Parts
+       * Each voice has a list of notes - Implicit
+
   * State value
+    * positive or negative decimal number
   
 * State transition/ policy
   * function (current state, list of adjacent states)
