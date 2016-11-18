@@ -1,4 +1,6 @@
-.bak
+*.bak
+
+*.swp
 
 composer-doc/*.css
 composer-doc/*.js
@@ -8,5 +10,7 @@ composer-doc/*.log
 composer-doc/*.out
 composer-doc/*.pdf
 composer-doc/*.aux
+
+compiled
 
 *~
