@@ -4,15 +4,29 @@
          "composer/composer.rkt")
 
 
-(struct state [list-of-instrument-parts harmonic-progression state-value]
+(struct state [list-of-harmonies harmonic-progression state-value]
     #:guard
-      (lambda (loip hp sv name)
+      (lambda (loh hp sv name)
         (if (and
-             (list? loip) ; list of instrument parts
+             (list? loh) ; list of harmonies
              (list? hp) ; list of symbols
              (number? sv)) ; numeric state value
-             (values loip hp sv)
+             (values loh hp sv)
             (error "Invalid state parameters"))))
+
+(struct part-range [lower-bound upper-bound]
+  #:guard
+    (lambda (lb ub name)
+      (if (and
+           (pair? lb)
+           (pair? ub)
+           (symbol? (car lb))
+           (symbol? (car ub))
+           (integer? (cdr lb))
+           (integer? (cdr ub)))
+          (values lb ub)
+          (error "Invalid part-range parameters"))))
+           
 
 ;; a mapping of current states to next states
 ;; implement via pattern matching
@@ -28,11 +42,27 @@
                           policy
                           analysis-function) 1)
 
-(define progression
+(define chord-progression
   (list 'I 'IV 'V 'I))
+
+(define (enumerate-part-range pr)
+  (
+
+(define (part-range-valid-notes pr harmony)
+    
 
 ;; comment
 (define (populate-state-space progression
                               key
-                              num-voices)
-  
+                              list-of-part-ranges)
+  (define (populate-helper progression
+                           key
+                           list-of-part-ranges
+                           list-of-states)
+    (if (null? progression)
+        list-of-states
+        (let* ([current-harmony (car progression)]
+               [
+
+
+
