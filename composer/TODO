@@ -3,6 +3,7 @@ Feature Wishlist
 Easy
 -double sharps/flats
 -harmonies
+-pickup measure
 -make key-signature a keyword in <#procedure:section>
  instead of a label-function
 -more argchecks

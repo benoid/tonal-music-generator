@@ -2,6 +2,7 @@
 
 (require "../define-argcheck.rkt"
          "beat-value.rkt"
+         "harmony.rkt"
          "note.rkt")
 (provide (all-defined-out))
 
@@ -162,9 +163,20 @@
         (else 
           (equal? 
             (foldl (lambda (n v)
-                      (if (not (note? n))
-                        (error "expected list of type: <#note> | actual: " v )
-                        (+ (beat-value->fraction ((note-duration n) 1)) v)))
+                     (cond 
+                       ((harmony? n)
+                        (foldl 
+                          (lambda (x y)
+                            (max x y))
+                          0
+                          (map 
+                            (lambda (x)
+                              (beat-value->fraction ((note-duration x) 1)))
+                            (harmony-notes n))))
+                        ((not (note? n))
+                          (error "expected list of type: <#note> | actual: " v ))
+                        (else  
+                          (+ (beat-value->fraction ((note-duration n) 1)) v))))
                    0
                    (measure-notes meas))
             (/ (time-signature-beats-per-measure time-sig) 
@@ -172,8 +184,20 @@
 (define (measure-frames meas tempo)
   (foldl
     (lambda (n total)
-      (if (not (note? n))
-          0
-          (+ total (beat-value-frames ((note-duration n) tempo)))))
+      (cond ((harmony? n)
+             (+ total
+                (foldl 
+                  (lambda 
+                    (x y)
+                    (max x y))
+                    0
+                  (map
+                    (lambda (x)
+                      (beat-value-frames ((note-duration x) tempo))) 
+                    (harmony-notes n)))))
+            ((not (note? n))
+             0)
+             (else
+               (+ total (beat-value-frames ((note-duration n) tempo))))))
     0
     (measure-notes meas)))

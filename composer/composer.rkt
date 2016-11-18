@@ -5,6 +5,7 @@
          "beat-value.rkt"
          "score.rkt"
          "composer-rsound.rkt"
+         "harmony.rkt"
          "composer-rsound-instrument.rkt")
 
 
@@ -14,4 +15,5 @@
          "beat-value.rkt"
          "score.rkt"
          "composer-rsound.rkt"
+         "harmony.rkt"
          "composer-rsound-instrument.rkt"))

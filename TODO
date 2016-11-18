@@ -17,5 +17,6 @@
       * update the current state value based 
         on analysis function reward/penalty
       * return the next state
+* Policy
 
 * Port harmony functions to new library  
