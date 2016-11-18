@@ -11,12 +11,7 @@
   * State value
     * positive or negative decimal number
   
-* State transition/ policy
-  * function (current state, list of adjacent states)
-      * pick a state
-      * update the current state value based 
-        on analysis function reward/penalty
-      * return the next state
-* Policy
+
+* Populate state space
 
 * Port harmony functions to new library  
