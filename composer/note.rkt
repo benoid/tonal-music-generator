@@ -26,6 +26,21 @@
               (values letter octave duration)
               (error "<#procedure:note> invalid arguments")))))
 
+(define/argcheck (note-pitch-equal? [note1 note? "note?"]
+                               [note2 note? "note?"])
+  (eq? (note-midi-number note1) (note-midi-number note2)))
+
+
+(define/argcheck (note-duration-equal? [note1 note? "note?"]
+                               [note2 note? "note?"])
+  (eq? (note-duration note1) (note-duration note2)))
+
+(define/argcheck (note-equal? [note1 note? "note?"]
+                               [note2 note? "note?"])
+  (and (note-pitch-equal? note1 note2)
+       (note-duration-equal? note1 note2)))
+
+
 (define/argcheck (make-rest 
                    [duration 
                     procedure? 

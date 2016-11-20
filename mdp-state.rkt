@@ -52,7 +52,7 @@
     (part-range (pitch 'C 3) (pitch 'C 5)) ;; Tenor
     (part-range (pitch 'E 2) (pitch 'E 4)))) ;; Bass 
 
-(define (enumerate-part-range pr) 0)
+(define (enumerate-part-range pr))
 
 
 (define (part-range-valid-notes pr harmony)
