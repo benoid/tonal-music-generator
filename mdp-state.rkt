@@ -3,6 +3,7 @@
 (require "define-argcheck.rkt"
          "composer/composer.rkt")
 
+(provide (all-defined-out))
 
 (struct state [list-of-harmonies harmonic-progression state-value]
     #:guard
@@ -52,14 +53,32 @@
     (part-range (pitch 'C 3) (pitch 'C 5)) ;; Tenor
     (part-range (pitch 'E 2) (pitch 'E 4)))) ;; Bass 
 
-(define (enumerate-part-range pr))
+(define (enumerate-part-range pr)
+  (for/list ([i (in-range 
+                  (note-midi-number (part-range-lower-bound pr))
+                  (+ (note-midi-number (part-range-upper-bound pr)) 1))])
+    (make-note-from-midi-num i null-beat)))
+
+(define  cmaj 
+  (harmony
+    (whole-note 'C 5)
+    (whole-note 'E 5)
+    (whole-note 'G 5)
+    (whole-note 'C 5)))
 
 
-(define (part-range-valid-notes pr harmony)
+(define (part-range-valid-pitches pr harmony)
+  (let ([pr-all-pitches (enumerate-part-range pr)])
+    (filter 
+      (lambda (x) 
+        (ormap (lambda (y)
+                 (note-pitch-class-enharm-eq? x y))
+               (harmony-notes harmony)))
+      pr-all-pitches)))
     
 
 ;; comment
-(define (populate-state-space progression
+#|(define (populate-state-space progression
                               key
                               list-of-part-ranges)
   (define (populate-helper progression
@@ -70,6 +89,6 @@
         list-of-states
         (let* ([current-harmony (car progression)]
                [
-
+|#
 
 
