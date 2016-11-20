@@ -14,16 +14,16 @@
              (values loh hp sv)
             (error "Invalid state parameters"))))
 
+(define (pitch letter octave)
+  (note letter octave null-beat))
+
+
 (struct part-range [lower-bound upper-bound]
   #:guard
     (lambda (lb ub name)
       (if (and
-           (pair? lb)
-           (pair? ub)
-           (symbol? (car lb))
-           (symbol? (car ub))
-           (integer? (cdr lb))
-           (integer? (cdr ub)))
+            (note? lb)
+            (note? ub))
           (values lb ub)
           (error "Invalid part-range parameters"))))
            
@@ -45,8 +45,15 @@
 (define chord-progression
   (list 'I 'IV 'V 'I))
 
-(define (enumerate-part-range pr)
-  (
+(define example-part-range-list
+  (list
+    (part-range (pitch 'C 4) (pitch 'C 6)) ;; Soprano
+    (part-range (pitch 'F 3) (pitch 'F 5)) ;; Alto
+    (part-range (pitch 'C 3) (pitch 'C 5)) ;; Tenor
+    (part-range (pitch 'E 2) (pitch 'E 4)))) ;; Bass 
+
+(define (enumerate-part-range pr) 0)
+
 
 (define (part-range-valid-notes pr harmony)
     
