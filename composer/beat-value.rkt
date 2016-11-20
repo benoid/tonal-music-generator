@@ -19,34 +19,39 @@
     0
   (round (* (/ 60 tempo) 44100))))
 
+(define/argcheck (null-beat [tempo exact-positive-integer? "exact-positive-integer?"])
+  (beat-value 
+    'NullBeat 
+    0))
+
 (define/argcheck (whole-beat [tempo exact-positive-integer? "exact-positive-integer?"])
   (beat-value 
-    'WholeNote 
+    'WholeBeat 
     (* (bpm-to-frames tempo) 4)))
 
 (define/argcheck (half-beat [tempo exact-positive-integer? "exact-positive-integer?"])
   (beat-value 
-    'HalfNote 
+    'HalfBeat 
     (* (bpm-to-frames tempo) 2)))
 
 (define/argcheck (quarter-beat [tempo exact-positive-integer? "exact-positive-integer?"])
   (beat-value 
-    'QuarterNote 
+    'QuarterBeat 
     (bpm-to-frames tempo)))
 
 (define/argcheck (eighth-beat [tempo exact-positive-integer? "exact-positive-integer?"])
   (beat-value 
-    'EighthNote 
+    'EighthBeat 
     (round (* (bpm-to-frames tempo) 0.5))))
 
 (define/argcheck (sixteenth-beat [tempo exact-positive-integer? "exact-positive-integer?"])
   (beat-value 
-    'SixteenthNote 
+    'SixteenthBeat 
     (round (* (bpm-to-frames tempo) 0.25))))
 
 (define/argcheck (thirtysecond-beat [tempo exact-positive-integer? "exact-positive-integer?"])
   (beat-value 
-    'ThirtysecondNote 
+    'ThirtysecondBeat 
     (round (* (bpm-to-frames tempo) 0.125))))
 
 (define/argcheck (dotted [nl beat-value? "beat-value"])
@@ -107,23 +112,24 @@
 (define/argcheck (beat-value->fraction
                    [nl beat-value? "beat-value"])
   (cond 
-        ((eq? (beat-value-name nl) 'WholeNote) 1)
-        ((eq? (beat-value-name nl) 'HalfNote) 1/2)
-        ((eq? (beat-value-name nl) 'QuarterNote) 1/4)
-        ((eq? (beat-value-name nl) 'EighthNote) 1/8)
-        ((eq? (beat-value-name nl) 'SixteenthNote) 1/16)
-        ((eq? (beat-value-name nl) 'ThirtysecondNote) 1/32)
+        ((eq? (beat-value-name nl) 'NullBeat) 0)
+        ((eq? (beat-value-name nl) 'WholeBeat) 1)
+        ((eq? (beat-value-name nl) 'HalfBeat) 1/2)
+        ((eq? (beat-value-name nl) 'QuarterBeat) 1/4)
+        ((eq? (beat-value-name nl) 'EighthBeat) 1/8)
+        ((eq? (beat-value-name nl) 'SixteenthBeat) 1/16)
+        ((eq? (beat-value-name nl) 'ThirtysecondBeat) 1/32)
 
-        ((eq? (beat-value-name nl) 'DottedWholeNote) 3/2)
-        ((eq? (beat-value-name nl) 'DottedHalfNote) 3/4)
-        ((eq? (beat-value-name nl) 'DottedQuarterNote) 3/8)
-        ((eq? (beat-value-name nl) 'DottedEighthNote) 3/16)
-        ((eq? (beat-value-name nl) 'DottedSixteenthNote) 3/32)
+        ((eq? (beat-value-name nl) 'DottedWholeBeat) 3/2)
+        ((eq? (beat-value-name nl) 'DottedHalfBeat) 3/4)
+        ((eq? (beat-value-name nl) 'DottedQuarterBeat) 3/8)
+        ((eq? (beat-value-name nl) 'DottedEighthBeat) 3/16)
+        ((eq? (beat-value-name nl) 'DottedSixteenthBeat) 3/32)
 
-        ((eq? (beat-value-name nl) 'DoubleDottedWholeNote) 7/4)
-        ((eq? (beat-value-name nl) 'DoubleDottedHalfNote) 7/8)
-        ((eq? (beat-value-name nl) 'DoubleDottedQuarterNote) 7/16)
-        ((eq? (beat-value-name nl) 'DoubleDottedEighthNote) 7/32)
+        ((eq? (beat-value-name nl) 'DoubleDottedWholeBeat) 7/4)
+        ((eq? (beat-value-name nl) 'DoubleDottedHalfBeat) 7/8)
+        ((eq? (beat-value-name nl) 'DoubleDottedQuarterBeat) 7/16)
+        ((eq? (beat-value-name nl) 'DoubleDottedEighthBeat) 7/32)
         ((string=? 
            (substring (symbol->string (beat-value-name nl)) 0 11)
            "Subdivision")

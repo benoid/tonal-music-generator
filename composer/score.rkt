@@ -181,6 +181,7 @@
                    (measure-notes meas))
             (/ (time-signature-beats-per-measure time-sig) 
                (time-signature-type-of-beat time-sig))))))
+
 (define (measure-frames meas tempo)
   (foldl
     (lambda (n total)

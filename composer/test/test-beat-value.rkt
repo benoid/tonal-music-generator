@@ -60,31 +60,31 @@
                            "create double dotted quarter note failed: frames")
              (check-equal? (beat-value-name
                              (whole-beat t)) 
-                             'WholeNote
+                             'WholeBeat
                            "create whole note failed: name")
              (check-equal? (beat-value-name
                              (quarter-beat t)) 
-                             'QuarterNote
+                             'QuarterBeat
                            "create: quarter note failed: name")
              (check-equal? (beat-value-name
                              (eighth-beat t)) 
-                             'EighthNote
+                             'EighthBeat
                            "create: eighth note failed: name")
              (check-equal? (beat-value-name
                              (sixteenth-beat t)) 
-                             'SixteenthNote
+                             'SixteenthBeat
                            "create: sixteenth note failed: name")
              (check-equal? (beat-value-name
                              (thirtysecond-beat t)) 
-                             'ThirtysecondNote
+                             'ThirtysecondBeat
                            "create: thirtysecond note failed: name")
              (check-equal? (beat-value-name
                              (dotted-quarter-beat t)) 
-                             'DottedQuarterNote
+                             'DottedQuarterBeat
                            "create dotted quarter note failed: name")
              (check-equal? (beat-value-name
                              (double-dotted-quarter-beat t)) 
-                             'DoubleDottedQuarterNote
+                             'DoubleDottedQuarterBeat
                            "create double dotted quarter note failed: name")
              )))
     (test-case
