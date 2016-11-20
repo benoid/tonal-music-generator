@@ -27,6 +27,12 @@
               (error "<#procedure:note> invalid arguments")))))
 
 
+(define/argcheck (note->list [n note? note])
+  (list
+    (note-letter n)
+    (note-octave n)
+    (note-duration n)))
+
 (define/argcheck (note-pitch-enharm-eq? [note1 note? "note?"]
                                [note2 note? "note?"])
   (eq? (note-midi-number note1) (note-midi-number note2)))
