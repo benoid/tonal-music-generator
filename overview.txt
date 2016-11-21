@@ -1,0 +1,84 @@
+# Overview
+
+## File Index
+  Files existing solely as part of this project
+    * mdp-state-representation.rkt
+       Authors: Brian Chiang and David Benoit
+       Description: Provide a representation of Markovian
+                    states and state spaces.  Create and print
+                    an example state space.
+       Individual Contributions:
+         - Brian
+             state representation (lines 9-18)
+             part range representation (lines 32)
+             collaborated on state space population (lines 94-119)
+             collaborated on state space printing (lines 128-154)
+         - David
+             pitch representation (lines 21-22)
+             part range example (lines 58-63)
+             enumerate part range (lines 66-70)
+             find valid pitches for a part range 
+               given a harmony (lines 81-88)
+             collaborated on state space population (lines 94-119)
+             collaborated on state space printing (lines 128-154)
+
+## Project Dependencies
+  Composer library
+    Author: David Benoit
+    Description: A library which provides a music theory abstraction
+                 to Racket's Rsound.  This library was written partially
+                 alongside our AI Final Project, and partially beforehand.
+                 It is not intended to be graded as content in the project.
+             
+
+  Files from other repositories used by this project,
+  which have been modified to add functionality
+  required by our project.  Changes have been pushed 
+  upstream.
+    * composer/beat-value.rkt
+        Author: David Benoit
+        Description: Part of the Composer library
+        Changes Made by David as part of the AI project:
+          https://github.com/benoid/tonal-music-generator/commit/9d858836064684efaee4aea00d3cdb5c67745ebe
+    * composer/harmony.rkt
+        Author: David Benoit
+        Description: Part of the Composer library
+          https://github.com/benoid/tonal-music-generator/commit/322709d14e2a1d38d22785234257b84760e5a173
+    * composer/note.rkt
+        Author: David Benoit
+        Description: Part of the Composer library
+        Changes Made by David as part of the AI project:
+          https://github.com/benoid/tonal-music-generator/commit/27c7ff7a95d868fb74cec75c264328770aff57c3
+          https://github.com/benoid/tonal-music-generator/commit/2822061e4ebcb67792bec0f3b87a9a013c86d7cd
+    * composer/score.rkt
+        Author: David Benoit
+        Description: Part of the Composer library
+        Changes Made by David as part of the AI project:
+          https://github.com/benoid/tonal-music-generator/commit/322709d14e2a1d38d22785234257b84760e5a173
+    * composer/composer-rsound-instrument.rkt 
+        Author: David Benoit
+        Description: Part of the Composer library
+        Changes Made by David as part of the AI project:
+          https://github.com/benoid/tonal-music-generator/commit/322709d14e2a1d38d22785234257b84760e5a173
+        
+
+  Files from other repositories used by this project,
+  which we have not made any changes to.
+    * define/argcheck.rkt
+        Author: John Clements
+        Description: This file was written as part of Racket's
+                     RSound library.  It provides a syntax for
+                     argument checking.  It is required by the
+                     Composer library.
+    * composer/composer-rsound.rkt
+        Author: David Benoit
+        Description: Part of the Composer library
+    * composer/composer-util.rkt
+        Author: David Benoit
+        Description: Part of the Composer library
+    * composer.rkt
+        Author: David Benoit
+        Description: Part of the Composer library
+    * composer/test/*
+        Author: David Benoit
+        Description: Part of the Composer library
