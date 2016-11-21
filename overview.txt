@@ -26,10 +26,15 @@
   Composer library
     Author: David Benoit
     Description: A library which provides a music theory abstraction
-                 to Racket's Rsound.  This library was written partially
+                 to Racket's RSound Library.  This library was written partially
                  alongside our AI Final Project, and partially beforehand.
                  It is not intended to be graded as content in the project.
-             
+ 
+                 It is being written as part of David's fork of RSound, 
+                 which is the main repository for the code.  It is 
+                 available here:
+
+                 https://github.com/benoid/RSound/tree/master/rsound/composer
 
   Files from other repositories used by this project,
   which have been modified to add functionality
