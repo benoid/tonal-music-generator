@@ -77,8 +77,8 @@
       pr-all-pitches)))
     
 
-;; comment
-#|(define (populate-state-space progression
+
+(define (populate-state-space progression
                               key
                               list-of-part-ranges)
   (define (populate-helper progression
@@ -87,8 +87,35 @@
                            list-of-states)
     (if (null? progression)
         list-of-states
-        (let* ([current-harmony (car progression)]
-               [
-|#
+        (let* ([current-harmony
+                (functional-harmony
+                 key
+                 (car progression)
+                 null-beat)]
+               [parts-valid-note-list
+                (map
+                  (lambda (pr)
+                    (part-range-valid-pitches pr current-harmony))
+                  list-of-part-ranges)]
+               [state-layer
+                (apply cartesian-product parts-valid-note-list)])
+          (populate-helper (cdr progression) key list-of-part-ranges (cons state-layer list-of-states)))))
+  (populate-helper (reverse chord-progression) key list-of-part-ranges '()))
 
+(define example-state-space
+  (populate-state-space chord-progression
+                        (pitch 'C 5)
+                        example-part-range-list))
 
+(define (print-state-space stsp)
+  (map
+    (lambda (state-layer)
+      (map
+       (lambda (voicing)
+         (map (lambda (n)
+               (display (note->list n)) (newline))
+             voicing)
+         (newline)
+         (newline))
+       state-layer))
+  stsp))
