@@ -7,7 +7,7 @@
 (provide (all-defined-out))
 
 ;; state representation that contains a chord voicing, harmonic progression
-(struct state [chord-voicing harmonic-progression state-value]
+(struct state [chord-voicing harmonic-progression value]
     #:guard
       (lambda (cv hp sv name)
         (if (and
@@ -94,25 +94,28 @@
 (define (populate-state-space progression
                               key
                               list-of-part-ranges)
-  (define (populate-helper progression
+ (define (populate-helper sub-progression
                            key
                            list-of-part-ranges
-                           list-of-states)
-    (if (null? progression)
-        list-of-states
+                           list-of-state-groups)
+    (if (null? sub-progression)
+        list-of-state-groups
         (let* ([current-harmony
                 (functional-harmony
                  key
-                 (car progression)
+                 (car sub-progression)
                  null-beat)]
                [parts-valid-note-list
                 (map
                   (lambda (pr)
                     (part-range-valid-pitches pr current-harmony))
                   list-of-part-ranges)]
-               [state-layer
-                (apply cartesian-product parts-valid-note-list)])
-          (populate-helper (cdr progression) key list-of-part-ranges (cons state-layer list-of-states)))))
+               [state-group
+                (map
+                  (lambda (voicing)
+                    (state voicing progression 0))
+                  (apply cartesian-product parts-valid-note-list))])
+          (populate-helper (cdr sub-progression) key list-of-part-ranges (cons state-group list-of-state-groups)))))
   (populate-helper (reverse chord-progression) key list-of-part-ranges '()))
 
 ;; creates a sample state space over I, IV, V, I progression in C major
@@ -123,14 +126,32 @@
 
 ;; prints state space
 (define (print-state-space stsp)
-  (map
-    (lambda (state-layer)
-      (map
-       (lambda (voicing)
-         (map (lambda (n)
-               (display (note->list n)) (newline))
-             voicing)
-         (newline)
-         (newline))
-       state-layer))
-  stsp))
+ (void 
+   (map
+     (lambda (state-group)
+       (map
+        (lambda (st)
+          (display "State:")
+          (newline)
+          (display "  Progression: ")
+          (display (state-harmonic-progression st))
+          (newline)
+          (display "  Value: ")
+          (display (state-value st))
+          (newline)
+          (display "  Voicing: ")
+          (newline)
+          (map (lambda (n)
+                 (display "    ")
+                (display (note->list n)) (newline))
+              (state-chord-voicing st))
+          (newline)
+          (newline))
+       state-group))
+  stsp)
+   (display "Total State Space Size: ")
+   (display (length (flatten stsp)))
+   (newline)))
+
+
+(print-state-space example-state-space)
