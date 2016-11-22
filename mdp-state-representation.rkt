@@ -1,8 +1,8 @@
 #lang racket
 
 ;; needed libraries
-(require "define-argcheck.rkt"
-         "composer/composer.rkt")
+(require "rsound-composer/define-argcheck.rkt"
+         "rsound-composer/composer.rkt")
 
 (provide (all-defined-out))
 
