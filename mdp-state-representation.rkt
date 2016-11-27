@@ -4,7 +4,9 @@
 (require "rsound-composer/define-argcheck.rkt"
          "rsound-composer/composer.rkt")
 
-(provide (all-defined-out))
+(provide (all-defined-out)
+         (all-from-out "rsound-composer/composer.rkt"))
+
 
 ;; state representation that contains a chord voicing, harmonic progression
 (struct state [chord-voicing harmonic-progression value]
@@ -16,6 +18,23 @@
              (number? sv)) ; numeric state value
              (values cv hp sv)
             (error "Invalid state parameters"))))
+(define (state<=? s1 s2)
+  (define 
+    relationship-list
+    (for/list ([n1 (reverse (state-chord-voicing s1))]
+               [n2 (reverse (state-chord-voicing s2))])
+      (cond ((= (note-midi-number n1) (note-midi-number n2)) 0)
+            ((< (note-midi-number n1) (note-midi-number n2)) -1)
+            (else 1))))
+  (define (s<=helper rel-list)
+    (cond ((null? rel-list) #t)
+          ((eq? (car rel-list) -1) #t)
+          ((eq? (car rel-list) 1) #f)
+          (else ;; 0
+            (s<=helper (cdr rel-list)))))
+  (s<=helper relationship-list))
+
+
 
 ;; create a note without duration (pitch)
 (define (pitch letter octave)
@@ -127,7 +146,7 @@
                          (for/list ([n harmony-pitch-classes])
                            (if (member n voicing-pitch-classes) #t #f)))
                        (let ([voicing-midi-num (map note-midi-number voicing)])
-                         (eqv? voicing-midi-num (sort voicing-midi-num >=)))
+                         (equal? voicing-midi-num (sort voicing-midi-num >=)))
                        )))
 
 
@@ -141,6 +160,7 @@
   (populate-state-space chord-progression
                         (pitch 'C 5)
                         example-part-range-list))
+
 
 ;; prints state space
 (define (print-state-space stsp)
