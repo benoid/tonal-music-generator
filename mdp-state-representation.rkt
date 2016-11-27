@@ -118,10 +118,15 @@
                            [harmony-pitch-classes
                              (map note-pitch-class 
                                (harmony-notes current-harmony))])
-                     (andmap
-                       (lambda (x) x)
-                       (for/list ([n harmony-pitch-classes])
-                         (if (member n voicing-pitch-classes) #t #f)))))
+                     (and
+                       (andmap
+                         (lambda (x) x)
+                         (for/list ([n harmony-pitch-classes])
+                           (if (member n voicing-pitch-classes) #t #f)))
+                       (let ([voicing-midi-num (map note-midi-number voicing)])
+                         (eqv? voicing-midi-num (sort voicing-midi-num >=)))
+                       )))
+
 
                        
                   (apply cartesian-product parts-valid-note-list))])
