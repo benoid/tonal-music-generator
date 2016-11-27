@@ -1,7 +1,8 @@
 #lang racket
 
 ;; needed libraries
-(require "rsound-composer/define-argcheck.rkt"
+(require avl
+         "rsound-composer/define-argcheck.rkt"
          "rsound-composer/composer.rkt")
 
 (provide (all-defined-out)
@@ -90,6 +91,21 @@
   (avl-add! (policy-state-mapping pol)
             (cons current-state next-state)))
 
+(define (policy-contains? pol
+                          st)
+  (avl-contains? (policy-state-mapping pol) (cons st 0)))
+
+(define test-policy
+  (policy (make-custom-avl (lambda (x y) (state<=? (car x) (car y))) (lambda (x y) (state=? (car x) (car y))))))
+
+;; roman numerals represent functional harmony
+(define chord-progression
+  (list 'I 'IV 'V 'I))
+
+(define empty-state
+  (state '() chord-progression 0))
+
+
 
 ;; dummy function
 (define (schenkerian-analysis current-state) 1)
@@ -102,10 +118,6 @@
                           adjacent-states
                           policy
                           analysis-function) 1)
-
-;; roman numerals represent functional harmony
-(define chord-progression
-  (list 'I 'IV 'V 'I))
 
 ;; example of possible voice part ranges
 (define example-part-range-list
