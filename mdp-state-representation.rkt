@@ -111,6 +111,9 @@
                     (part-range-valid-pitches pr current-harmony))
                   list-of-part-ranges)]
                [voicing-group
+
+                 ;; To reduce the state space, we prune out obvious invalid 
+                 ;; voicings
                  (filter
                    (lambda (voicing)
                      (let ([voicing-pitch-classes 
@@ -156,6 +159,5 @@
    (display "Total State Space Size: ")
    (display (length (flatten stsp)))
    (newline)))
-
 
 (print-state-space example-state-space)
