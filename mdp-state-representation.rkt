@@ -97,9 +97,9 @@
  (define (populate-helper sub-progression
                            key
                            list-of-part-ranges
-                           list-of-state-groups)
+                           list-of-voicing-groups)
     (if (null? sub-progression)
-        list-of-state-groups
+        list-of-voicing-groups
         (let* ([current-harmony
                 (functional-harmony
                  key
@@ -110,12 +110,22 @@
                   (lambda (pr)
                     (part-range-valid-pitches pr current-harmony))
                   list-of-part-ranges)]
-               [state-group
-                (map
-                  (lambda (voicing)
-                    (state voicing progression 0))
+               [voicing-group
+                 (filter
+                   (lambda (voicing)
+                     (let ([voicing-pitch-classes 
+                             (map note-pitch-class voicing)]
+                           [harmony-pitch-classes
+                             (map note-pitch-class 
+                               (harmony-notes current-harmony))])
+                     (andmap
+                       (lambda (x) x)
+                       (for/list ([n harmony-pitch-classes])
+                         (if (member n voicing-pitch-classes) #t #f)))))
+
+                       
                   (apply cartesian-product parts-valid-note-list))])
-          (populate-helper (cdr sub-progression) key list-of-part-ranges (cons state-group list-of-state-groups)))))
+          (populate-helper (cdr sub-progression) key list-of-part-ranges (cons voicing-group list-of-voicing-groups)))))
   (populate-helper (reverse chord-progression) key list-of-part-ranges '()))
 
 ;; creates a sample state space over I, IV, V, I progression in C major
@@ -128,26 +138,15 @@
 (define (print-state-space stsp)
  (void 
    (map
-     (lambda (state-group)
+     (lambda (voicing-group)
        (map
-        (lambda (st)
-          (display "State:")
-          (newline)
-          (display "  Progression: ")
-          (display (state-harmonic-progression st))
-          (newline)
-          (display "  Value: ")
-          (display (state-value st))
-          (newline)
-          (display "  Voicing: ")
-          (newline)
+        (lambda (voicing)
           (map (lambda (n)
                  (display "    ")
                 (display (note->list n)) (newline))
-              (state-chord-voicing st))
-          (newline)
+              voicing)
           (newline))
-       state-group))
+       voicing-group))
   stsp)
    (display "Total State Space Size: ")
    (display (length (flatten stsp)))
