@@ -77,8 +77,18 @@
 
 ;; a mapping of current states to next states
 ;; implement via pattern matching
-;; doesn't do anything
-(struct policy [stuff])
+(struct policy [state-mapping]
+  #:guard
+  (lambda (stm type-name)
+    (if (avl? stm)
+      stm
+      (error "Invalid policy parameter"))))
+
+(define (policy-add-mapping pol
+                            current-state
+                            next-state)
+  (avl-add! (policy-state-mapping pol)
+            (cons current-state next-state)))
 
 
 ;; dummy function
