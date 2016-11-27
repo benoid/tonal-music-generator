@@ -105,6 +105,21 @@
 (define empty-state
   (state '() chord-progression 0))
 
+(define state-one
+  (state (list (note 'C 4 null-beat)
+               (note 'G 3 null-beat)
+               (note 'C 3 null-beat)
+               (note 'E 2 null-beat))
+         chord-progression
+         0))
+
+(define state-two
+  (state (list (note 'A 4 null-beat)
+               (note 'F 3 null-beat)
+               (note 'C 3 null-beat)
+               (note 'A 2 null-beat))
+         chord-progression
+         0))
 
 
 ;; dummy function
