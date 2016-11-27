@@ -9,7 +9,7 @@
 
 
 ;; state representation that contains a chord voicing, harmonic progression
-(struct state [chord-voicing harmonic-progression value]
+(struct state [voicing-prog harmonic-progression value]
     #:guard
       (lambda (cv hp sv name)
         (if (and
@@ -18,21 +18,45 @@
              (number? sv)) ; numeric state value
              (values cv hp sv)
             (error "Invalid state parameters"))))
-(define (state<=? s1 s2)
+
+(define (voicing-compare v1 v2)
   (define 
     relationship-list
-    (for/list ([n1 (reverse (state-chord-voicing s1))]
-               [n2 (reverse (state-chord-voicing s2))])
+    (for/list ([n1 (reverse v1)]
+               [n2 (reverse v2)])
       (cond ((= (note-midi-number n1) (note-midi-number n2)) 0)
             ((< (note-midi-number n1) (note-midi-number n2)) -1)
             (else 1))))
-  (define (s<=helper rel-list)
-    (cond ((null? rel-list) #t)
-          ((eq? (car rel-list) -1) #t)
-          ((eq? (car rel-list) 1) #f)
-          (else ;; 0
-            (s<=helper (cdr rel-list)))))
-  (s<=helper relationship-list))
+  (define (v-comp-helper rel-list)
+    (cond ((null? rel-list) 0)         ;; voicings are equal
+          ((eq? (car rel-list) -1) -1) ;; v1 < v2 
+          ((eq? (car rel-list) 1) 1)   ;; v1 > v2
+          (else                        ;; equal so far, check next
+            (v-comp-helper (cdr rel-list)))))
+  (v-comp-helper relationship-list))
+
+(define (state<=? s1 s2)
+  (define (s<=helper vprog1 vprog2)
+    (cond ((null? vprog1) #t)
+          ((null? vprog2) #f)
+          ((eq? (voicing-compare (car vprog1) (car vprog2)) -1) #t)
+          ((eq? (voicing-compare (car vprog1) (car vprog2)) 1) #f)
+
+          ;; Equal so far, check next
+          ((eq? (voicing-compare (car vprog1) (car vprog2)) 0)
+           (s<=helper (cdr vprog1) (cdr vprog2)))
+          (else "<#procedure:state<=?")))
+  (s<=helper (state-voicing-prog s1) (state-voicing-prog s2)))
+
+(define (state=? s1 s2)
+  (define (s<=helper vprog1 vprog2)
+    (cond ((and (null? vprog1)  (null? vprog2) #t))
+          ;; Equal so far, check next
+          ((eq? (voicing-compare (car vprog1) (car vprog2)) 0)
+           (s<=helper (cdr vprog1) (cdr vprog2)))
+          (else #f)))
+  (s<=helper (state-voicing-prog s1) (state-voicing-prog s2)))
+
 
 
 
@@ -179,5 +203,8 @@
    (display "Total State Space Size: ")
    (display (length (flatten stsp)))
    (newline)))
+
+;;(define test-avl
+ ;; (make-avl state-<=?))
 
 (print-state-space example-state-space)
