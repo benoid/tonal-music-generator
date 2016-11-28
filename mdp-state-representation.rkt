@@ -1,9 +1,10 @@
 #lang racket
 
 ;; needed libraries
-(require avl
+(require 
          "rsound-composer/define-argcheck.rkt"
-         "rsound-composer/composer.rkt")
+         "rsound-composer/composer.rkt"
+         "racket-avl-supplement.rkt")
 
 (provide (all-defined-out)
          (all-from-out "rsound-composer/composer.rkt"))
@@ -99,6 +100,9 @@
                           st)
   (avl-contains? (policy-state-mapping pol) (cons st 0)))
 
+(define (policy-match pol st)
+  (avl-find (policy-state-mapping pol) (cons st 0)))
+
 (define test-policy
   (policy (make-custom-avl (lambda (x y) (state<=? (car x) (car y))) (lambda (x y) (state=? (car x) (car y))))))
 
@@ -133,6 +137,9 @@
                (note 'A 2 null-beat)))
          chord-progression
          0))
+
+;(define (policy-get-action pol current-state)
+;  (let ([
 
 (policy-add-mapping test-policy empty-state state-one)
 (policy-contains? test-policy empty-state)
