@@ -100,8 +100,19 @@
                           st)
   (avl-contains? (policy-state-mapping pol) (cons st 0)))
 
-(define (policy-match pol st)
+(define (policy-match pol
+                      st)
   (avl-find (policy-state-mapping pol) (cons st 0)))
+
+(define (policy-request-action pol
+                               st
+                               voicing-enumeration)
+  (if (not (policy-contains? pol st))
+      (policy-add-mapping pol st (state
+                                  (append (state-voicing-prog st) (list-ref voicing-enumeration (length (state-voicing-prog st))))
+                                  (state-harmonic-progression st)
+                                  0))
+      (cdr (policy-match pol st))))
 
 (define test-policy
   (policy (make-custom-avl (lambda (x y) (state<=? (car x) (car y))) (lambda (x y) (state=? (car x) (car y))))))
@@ -142,7 +153,9 @@
 ;  (let ([
 
 (policy-add-mapping test-policy empty-state state-one)
-(policy-contains? test-policy empty-state)
+;(policy-contains? test-policy empty-state)
+
+
 
 ;; dummy function
 (define (schenkerian-analysis current-state) 1)
@@ -239,7 +252,7 @@
   (populate-helper (reverse chord-progression) key list-of-part-ranges '()))
 
 ;; creates a sample state space over I, IV, V, I progression in C major
-#;(define example-state-space
+(define example-voicing-enumeration
   (populate-state-space chord-progression
                         (pitch 'C 5)
                         example-part-range-list))
@@ -267,3 +280,10 @@
  ;; (make-avl state-<=?))
 
 ;(print-state-space example-state-space)
+
+;; The following line should return true
+(state=?
+  (policy-request-action test-policy
+                         empty-state
+                         example-voicing-enumeration)
+  state-one)
