@@ -2,44 +2,57 @@
 
 ## File Index
   Files existing solely as part of this project
-    * mdp-state-representation.rkt
+    * mdp-state.rkt
        Authors: Brian Chiang and David Benoit
        Description: Provide a representation of Markovian
                     states and state spaces.  Create and print
                     an example state space.
        Individual Contributions:
          - Brian
-             state representation (lines 9-18)
-             part range representation (lines 32)
-             collaborated on state space population (lines 94-119)
-             collaborated on state space printing (lines 128-154)
+             state representation
+             part range representation
+             collaborated on state space population
+             collaborated on state space printing
          - David
-             pitch representation (lines 21-22)
-             part range example (lines 58-63)
-             enumerate part range (lines 66-70)
+             pitch representation
+             part range example
+             enumerate part range
              find valid pitches for a part range 
-               given a harmony (lines 81-88)
-             collaborated on state space population (lines 94-119)
-             collaborated on state space printing (lines 128-154)
+               given a harmony
+             collaborated on state space population
+             collaborated on state space printing
+             Checkpoint 2 Update:
+               states store info about sequential voicings
+               state comparison functions for use in policy search tree
+               example state creation
+               
 
-## Project Dependencies
-  Composer library
-    Author: David Benoit
-    Description: A library which provides a music theory abstraction
-                 to Racket's RSound Library.  This library was written partially
-                 alongside our AI Final Project, and partially beforehand.
-                 It is not intended to be graded as content in the project.
- 
-                 It is being written as part of David's fork of RSound, 
-                 which is the main repository for the code.  It is 
-                 available here:
+    * mdp-policy.rkt
+       Authors: Brian Chiang and David Benoit
+       Description: Provide a representation of a Markovian
+                    policy. 
+       Individual Contributions:
+         - Brian
+             policy-contains
+             policy-state-mapping
+             collaborated on policy representation
+         - David
+             policy request action
+             example policy creation
+             collaborated on policy representation
 
-                 https://github.com/benoid/RSound/tree/master/rsound/composer
 
   Files from other repositories used by this project,
   which have been modified to add functionality
-  required by our project.  Changes have been pushed 
-  upstream.
+  required by our project.
+
+    * racket-avl-modified.rkt
+        Author: Jan Dvořák
+        Description: A modified version of the main.rkt file from racket-avl
+        Changes made by David Benoit as part of the AI project: 
+          Added lines 386-406, which are a modified version of 
+          the avl-contains? function called avl-find.  avl-find
+          returns the match of the item in the tree, or #f if not found.
     * composer/beat-value.rkt
         Author: David Benoit
         Description: Part of the Composer library
@@ -87,3 +100,23 @@
     * composer/test/*
         Author: David Benoit
         Description: Part of the Composer library
+
+## Project Dependencies
+  Composer library
+    Author: David Benoit
+    Description: A library which provides a music theory abstraction
+                 to Racket's RSound Library.  This library was written partially
+                 alongside our AI Final Project, and partially beforehand.
+                 It is not intended to be graded as content in the project.
+ 
+                 It is being written as part of David's fork of RSound, 
+                 which is the main repository for the code.  It is 
+                 available here:
+
+                 https://github.com/benoid/RSound/tree/master/rsound/composer
+  racket-avl
+    Author: Jan Dvořák
+      Modified by David Benoit
+    Description: avl tree implementation in racket
+
+                 https://github.com/mordae/racket-avl

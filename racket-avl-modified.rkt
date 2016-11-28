@@ -3,7 +3,10 @@
 ;; It is available under the same terms as racket 
 ;;   http://download.racket-lang.org/license.html
 
-;; It includes the added functionality of avl-find (lines 386-406)
+;; It includes the added functionality of avl-find (lines 386-406) 
+;; which is a modified version of the avl-contains? function called 
+;; avl-find.  avl-find returns the match of the item in the tree, 
+;; or #f if not found.
 
 #lang racket
 
