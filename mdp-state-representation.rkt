@@ -4,7 +4,7 @@
 (require 
          "rsound-composer/define-argcheck.rkt"
          "rsound-composer/composer.rkt"
-         "racket-avl-supplement.rkt")
+         "racket-avl-modified.rkt")
 
 (provide (all-defined-out)
          (all-from-out "rsound-composer/composer.rkt"))
