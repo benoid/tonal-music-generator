@@ -50,13 +50,17 @@
   (s<=helper (state-voicing-prog s1) (state-voicing-prog s2)))
 
 (define (state=? s1 s2)
-  (define (s<=helper vprog1 vprog2)
+  (define (s=helper vprog1 vprog2)
     (cond ((and (null? vprog1)  (null? vprog2) #t))
+          ((null? vprog1) #f)
+          ((null? vprog2) #f)
           ;; Equal so far, check next
           ((eq? (voicing-compare (car vprog1) (car vprog2)) 0)
-           (s<=helper (cdr vprog1) (cdr vprog2)))
+           (s=helper (cdr vprog1) (cdr vprog2)))
           (else #f)))
-  (s<=helper (state-voicing-prog s1) (state-voicing-prog s2)))
+  (s=helper (state-voicing-prog s1) (state-voicing-prog s2)))
+
+
 
 
 
@@ -106,21 +110,32 @@
   (state '() chord-progression 0))
 
 (define state-one
-  (state (list (note 'C 4 null-beat)
+  (state (list
+           (list
+               (note 'C 4 null-beat)
                (note 'G 3 null-beat)
                (note 'C 3 null-beat)
-               (note 'E 2 null-beat))
+               (note 'E 2 null-beat)))
          chord-progression
          0))
 
 (define state-two
-  (state (list (note 'A 4 null-beat)
+  (state (list 
+           (list
+               (note 'C 4 null-beat)
+               (note 'G 3 null-beat)
+               (note 'C 3 null-beat)
+               (note 'E 2 null-beat))
+           (list 
+               (note 'A 4 null-beat)
                (note 'F 3 null-beat)
                (note 'C 3 null-beat)
-               (note 'A 2 null-beat))
+               (note 'A 2 null-beat)))
          chord-progression
          0))
 
+(policy-add-mapping test-policy empty-state state-one)
+(policy-contains? test-policy empty-state)
 
 ;; dummy function
 (define (schenkerian-analysis current-state) 1)
@@ -217,7 +232,7 @@
   (populate-helper (reverse chord-progression) key list-of-part-ranges '()))
 
 ;; creates a sample state space over I, IV, V, I progression in C major
-(define example-state-space
+#;(define example-state-space
   (populate-state-space chord-progression
                         (pitch 'C 5)
                         example-part-range-list))
@@ -244,4 +259,4 @@
 ;;(define test-avl
  ;; (make-avl state-<=?))
 
-(print-state-space example-state-space)
+;(print-state-space example-state-space)
