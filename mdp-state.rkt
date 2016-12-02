@@ -150,8 +150,6 @@
                        (let ([voicing-midi-num (map note-midi-number voicing)])
                          (equal? voicing-midi-num (sort voicing-midi-num >=)))
                        )))
-
-
                        
                   (apply cartesian-product parts-valid-note-list))])
           (populate-helper (cdr sub-progression) key list-of-part-ranges (cons voicing-group list-of-voicing-groups)))))

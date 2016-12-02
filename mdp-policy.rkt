@@ -30,14 +30,19 @@
                                st
                                voicing-enumeration)
   (if (not (policy-contains? pol st))
-      (policy-add-mapping pol st (state
-                                  (append (state-voicing-prog st) (list-ref voicing-enumeration (length (state-voicing-prog st))))
+      (policy-add-mapping pol st 
+                          (state
+                            (append 
+                              (state-voicing-prog st) 
+                              (list-ref voicing-enumeration 
+                                        (length (state-voicing-prog st))))
                                   (state-harmonic-progression st)
                                   0))
       (cdr (policy-match pol st))))
 
 (define test-policy
-  (policy (make-custom-avl (lambda (x y) (state<=? (car x) (car y))) (lambda (x y) (state=? (car x) (car y))))))
+  (policy (make-custom-avl (lambda (x y) (state<=? (car x) (car y))) 
+                           (lambda (x y) (state=? (car x) (car y))))))
 
 ;; roman numerals represent functional harmony
 (define chord-progression
