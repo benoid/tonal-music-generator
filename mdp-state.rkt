@@ -109,21 +109,9 @@
       pr-all-pitches)))
     
 
-(define (populate-voice-part progression
-                             key
-                             prt-rng)
-  (apply cartesian-product
-  (map
-    (lambda (chord)
-      (let ([current-harmony (functional-harmony key chord null-beat)])
-      (part-range-valid-pitches prt-rng current-harmony)
-      ))
-    progression)))
-
 ;; populates the state space, which is a list of cartesian products of valid
 ;; pitches for each part range
 ;; takes a recursive approach in populating state space.  Takes first chord in state space and return all possible chord voicings.
-#|
 (define (populate-voicing-enumeration progression
                               key
                               list-of-part-ranges)
@@ -166,20 +154,17 @@
                   (apply cartesian-product parts-valid-note-list))])
           (populate-helper (cdr sub-progression) key list-of-part-ranges (cons voicing-group list-of-voicing-groups)))))
   (populate-helper (reverse chord-progression) key list-of-part-ranges '()))
-|#
+
 ;; roman numerals represent functional harmony
 (define chord-progression
-  (list 
-    'I 'IV 'VI 'IV 'II 'V7/V 'V 'I
-    ))
+  (list 'I 'IV 'V 'I))
 
 ;; creates a sample state space over I, IV, V, I progression in C major
-#|
 (define example-voicing-enumeration
   (populate-voicing-enumeration chord-progression
                         (pitch 'C 5)
                         example-part-range-list))
-|#
+
 ;; prints state space
 (define (print-voicing-enumeration ve)
  (void 
