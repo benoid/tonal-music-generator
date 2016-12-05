@@ -2,23 +2,23 @@
 
 ;; needed libraries
 (require 
-         "rsound-composer/define-argcheck.rkt"
-         "rsound-composer/composer.rkt")
+  "rsound-composer/define-argcheck.rkt"
+  "rsound-composer/composer.rkt")
 
 (provide (all-defined-out)
          (all-from-out "rsound-composer/composer.rkt"))
 
 
 ;; state representation that contains a chord voicing, harmonic progression
-(struct state [voicing-prog harmonic-progression value]
-    #:guard
-      (lambda (cv hp sv name)
-        (if (and
-             (list? cv) ; list of harmonies
-             (list? hp) ; list of symbols
-             (number? sv)) ; numeric state value
-             (values cv hp sv)
-            (error "Invalid state parameters"))))
+(struct state [voicing harmonic-progression value]
+  #:guard
+  (lambda (cv hp sv name)
+    (if (and
+          (list? cv) ; list of harmonies
+          (list? hp) ; list of symbols
+          (number? sv)) ; numeric state value
+      (values cv hp sv)
+      (error "Invalid state parameters"))))
 
 (define (voicing-compare v1 v2)
   (define 
@@ -35,7 +35,7 @@
           (else                        ;; equal so far, check next
             (v-comp-helper (cdr rel-list)))))
   (v-comp-helper relationship-list))
-
+#|
 (define (state<=? s1 s2)
   (define (s<=helper vprog1 vprog2)
     (cond ((null? vprog1) #t)
@@ -59,6 +59,7 @@
            (s=helper (cdr vprog1) (cdr vprog2)))
           (else #f)))
   (s=helper (state-voicing-prog s1) (state-voicing-prog s2)))
+|#
 
 ;; create a note without duration (pitch)
 (define (pitch letter octave)
@@ -67,13 +68,13 @@
 ;; upper and lower bounds for acceptable notes in a voice
 (struct part-range [lower-bound upper-bound]
   #:guard
-    (lambda (lb ub name)
-      (if (and
-            (note? lb)
-            (note? ub))
-          (values lb ub)
-          (error "Invalid part-range parameters"))))
-           
+  (lambda (lb ub name)
+    (if (and
+          (note? lb)
+          (note? ub))
+      (values lb ub)
+      (error "Invalid part-range parameters"))))
+
 
 ;; example of possible voice part ranges
 (define example-part-range-list
@@ -107,79 +108,102 @@
                  (note-pitch-class-enharm-eq? x y))
                (harmony-notes harmony)))
       pr-all-pitches)))
-    
+
 
 ;; populates the state space, which is a list of cartesian products of valid
 ;; pitches for each part range
 ;; takes a recursive approach in populating state space.  Takes first chord in state space and return all possible chord voicings.
-(define (populate-voicing-enumeration progression
+(define (populate-state-space progression
                               key
                               list-of-part-ranges)
- (define (populate-helper sub-progression
+  (define (populate-helper sub-progression
                            key
                            list-of-part-ranges
                            list-of-voicing-groups)
     (if (null? sub-progression)
-        list-of-voicing-groups
-        (let* ([current-harmony
-                (functional-harmony
+      list-of-voicing-groups
+      (let* ([current-harmony
+               (functional-harmony
                  key
                  (car sub-progression)
                  null-beat)]
-               [parts-valid-note-list
-                (map
-                  (lambda (pr)
-                    (part-range-valid-pitches pr current-harmony))
-                  list-of-part-ranges)]
-               [voicing-group
-
-                 ;; To reduce the state space, we prune out obvious invalid 
-                 ;; voicings
-                 (filter
-                   (lambda (voicing)
-                     (let ([voicing-pitch-classes 
-                             (map note-pitch-class voicing)]
-                           [harmony-pitch-classes
-                             (map note-pitch-class 
-                               (harmony-notes current-harmony))])
-                     (and
-                       (andmap
-                         (lambda (x) x)
-                         (for/list ([n harmony-pitch-classes])
-                           (if (member n voicing-pitch-classes) #t #f)))
-                       (let ([voicing-midi-num (map note-midi-number voicing)])
-                         (equal? voicing-midi-num (sort voicing-midi-num >=)))
-                       )))
-                       
-                  (apply cartesian-product parts-valid-note-list))])
-          (populate-helper (cdr sub-progression) key list-of-part-ranges (cons voicing-group list-of-voicing-groups)))))
+             [parts-valid-note-list
+               (map
+                 (lambda (pr)
+                   (part-range-valid-pitches pr current-harmony))
+                 list-of-part-ranges)]
+             [voicing-group
+               ;; To reduce the state space, we prune out obvious invalid 
+               ;; voicings
+               (map (lambda (voicing)
+                      (state voicing progression 0))
+                    (filter
+                      (lambda (voicing)
+                        (let ([voicing-pitch-classes 
+                                (map note-pitch-class voicing)]
+                              [harmony-pitch-classes
+                                (map note-pitch-class 
+                                     (harmony-notes current-harmony))])
+                          (and
+                            (andmap
+                              (lambda (x) x)
+                              (for/list ([n harmony-pitch-classes])
+                                (if (member n voicing-pitch-classes) #t #f)))
+                            (let ([voicing-midi-num (map note-midi-number voicing)])
+                              (equal? voicing-midi-num (sort voicing-midi-num >=)))
+                            )))
+                      (apply cartesian-product parts-valid-note-list)))])
+        (populate-helper (cdr sub-progression) key list-of-part-ranges (cons voicing-group list-of-voicing-groups)))))
   (populate-helper (reverse chord-progression) key list-of-part-ranges '()))
 
 ;; roman numerals represent functional harmony
 (define chord-progression
-  (list 'I 'IV 'V 'I))
+  (list 
+    'I 'vi 'I 'vi 'IV 'ii 'V 'I
+    'I 'vi 'I 'vi 'IV 'ii 'V 'I
+    ))
 
 ;; creates a sample state space over I, IV, V, I progression in C major
-(define example-voicing-enumeration
-  (populate-voicing-enumeration chord-progression
+(define example-state-space
+  (populate-state-space chord-progression
                         (pitch 'C 5)
                         example-part-range-list))
+(define (shuffle-state-space stsp)
+  (map shuffle stsp))
 
 ;; prints state space
-(define (print-voicing-enumeration ve)
- (void 
-   (map
-     (lambda (voicing-group)
-       (map
-        (lambda (voicing)
-          (map (lambda (n)
-                 (display "    ")
-                (display (note->list n)) (newline))
-              voicing)
-          (newline))
-       voicing-group))
-  ve)
-   (display "Total State Space Size: ")
-   (display (length (flatten ve)))
-   (newline)))
+(define (print-state-space ve)
+  (void 
+    (map
+      (lambda (voicing-group)
+        (map
+          (lambda (voicing)
+            (map (lambda (n)
+                   (display "    ")
+                   (display (note->list n)) (newline))
+                 (state-voicing voicing))
+            (newline))
+          voicing-group))
+      ve)
+    (display "Total State Space Size: ")
+    (display (length (flatten ve)))
+    (newline)))
 
+(define (display-state st)
+  (void
+    (display "State:")
+    (newline)
+    (display "  Progression: ")
+    (display (state-harmonic-progression st))
+    (newline)
+    (display "  Value: ")
+    (display (state-value st))
+    (newline)
+    (display "  Voicing: ")
+    (newline)
+    (map (lambda (n)
+           (display "    ")
+           (display (note->list n)) (newline))
+         (state-voicing st))
+    (newline)
+    (newline)))
