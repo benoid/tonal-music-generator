@@ -8,129 +8,19 @@ State:
   Value: 0
   Voicing: 
     (C 6 #<procedure:null-beat>)
-    (C 5 #<procedure:null-beat>)
-    (G 3 #<procedure:null-beat>)
-    (E 3 #<procedure:null-beat>)
-
-
-State:
-  Progression: (i bVI iv ii-dim V i)
-  Value: 0
-  Voicing: 
-    (A 5 #<procedure:null-beat>)
-    (E 5 #<procedure:null-beat>)
-    (C 3 #<procedure:null-beat>)
-    (A 2 #<procedure:null-beat>)
-
-
-State:
-  Progression: (i bVI iv ii-dim V i)
-  Value: 0
-  Voicing: 
-    (G 5 #<procedure:null-beat>)
-    (E 4 #<procedure:null-beat>)
-    (E 3 #<procedure:null-beat>)
-    (C 3 #<procedure:null-beat>)
-
-
-State:
-  Progression: (i bVI iv ii-dim V i)
-  Value: 0
-  Voicing: 
-    (C 6 #<procedure:null-beat>)
-    (E 5 #<procedure:null-beat>)
-    (C 3 #<procedure:null-beat>)
-    (A 2 #<procedure:null-beat>)
-
-
-State:
-  Progression: (i bVI iv ii-dim V i)
-  Value: 0
-  Voicing: 
-    (C 5 #<procedure:null-beat>)
-    (C 5 #<procedure:null-beat>)
-    (F 3 #<procedure:null-beat>)
-    (A 2 #<procedure:null-beat>)
-
-
-State:
-  Progression: (i bVI iv ii-dim V i)
-  Value: 0
-  Voicing: 
-    (F 5 #<procedure:null-beat>)
-    (F 3 #<procedure:null-beat>)
-    (D 3 #<procedure:null-beat>)
-    (A 2 #<procedure:null-beat>)
-
-
-State:
-  Progression: (i bVI iv ii-dim V i)
-  Value: 0
-  Voicing: 
-    (B 5 #<procedure:null-beat>)
-    (D 5 #<procedure:null-beat>)
-    (D 3 #<procedure:null-beat>)
-    (G 2 #<procedure:null-beat>)
-
-
-State:
-  Progression: (i bVI iv ii-dim V i)
-  Value: 0
-  Voicing: 
-    (C 6 #<procedure:null-beat>)
-    (E 4 #<procedure:null-beat>)
-    (C 3 #<procedure:null-beat>)
-    (G 2 #<procedure:null-beat>)
-
-
-State:
-  Progression: (i bVI iv ii-dim V i)
-  Value: 0
-  Voicing: 
-    (C 5 #<procedure:null-beat>)
     (G 4 #<procedure:null-beat>)
-    (E 4 #<procedure:null-beat>)
-    (E 4 #<procedure:null-beat>)
+    (G 4 #<procedure:null-beat>)
+    (D#/Eb 4 #<procedure:null-beat>)
 
 
 State:
   Progression: (i bVI iv ii-dim V i)
   Value: 0
   Voicing: 
-    (C 5 #<procedure:null-beat>)
-    (E 4 #<procedure:null-beat>)
-    (E 4 #<procedure:null-beat>)
-    (A 2 #<procedure:null-beat>)
-
-
-State:
-  Progression: (i bVI iv ii-dim V i)
-  Value: 0
-  Voicing: 
-    (C 5 #<procedure:null-beat>)
-    (E 4 #<procedure:null-beat>)
-    (G 3 #<procedure:null-beat>)
-    (E 3 #<procedure:null-beat>)
-
-
-State:
-  Progression: (i bVI iv ii-dim V i)
-  Value: 0
-  Voicing: 
-    (E 5 #<procedure:null-beat>)
+    (C 6 #<procedure:null-beat>)
+    (D#/Eb 4 #<procedure:null-beat>)
     (C 4 #<procedure:null-beat>)
-    (A 3 #<procedure:null-beat>)
-    (C 3 #<procedure:null-beat>)
-
-
-State:
-  Progression: (i bVI iv ii-dim V i)
-  Value: 0
-  Voicing: 
-    (C 5 #<procedure:null-beat>)
-    (F 4 #<procedure:null-beat>)
-    (A 3 #<procedure:null-beat>)
-    (A 2 #<procedure:null-beat>)
+    (G#/Ab 2 #<procedure:null-beat>)
 
 
 State:
@@ -138,18 +28,28 @@ State:
   Value: 0
   Voicing: 
     (F 5 #<procedure:null-beat>)
-    (A 4 #<procedure:null-beat>)
-    (D 4 #<procedure:null-beat>)
-    (F 2 #<procedure:null-beat>)
+    (F 5 #<procedure:null-beat>)
+    (C 3 #<procedure:null-beat>)
+    (G#/Ab 2 #<procedure:null-beat>)
 
 
 State:
   Progression: (i bVI iv ii-dim V i)
   Value: 0
   Voicing: 
-    (G 5 #<procedure:null-beat>)
-    (B 4 #<procedure:null-beat>)
+    (F 5 #<procedure:null-beat>)
+    (G#/Ab 3 #<procedure:null-beat>)
     (D 3 #<procedure:null-beat>)
+    (D 3 #<procedure:null-beat>)
+
+
+State:
+  Progression: (i bVI iv ii-dim V i)
+  Value: 0
+  Voicing: 
+    (B 4 #<procedure:null-beat>)
+    (B 4 #<procedure:null-beat>)
+    (G 3 #<procedure:null-beat>)
     (D 3 #<procedure:null-beat>)
 
 
@@ -158,9 +58,9 @@ State:
   Value: 0
   Voicing: 
     (C 6 #<procedure:null-beat>)
-    (E 5 #<procedure:null-beat>)
-    (C 4 #<procedure:null-beat>)
-    (G 2 #<procedure:null-beat>)
+    (D#/Eb 4 #<procedure:null-beat>)
+    (G 3 #<procedure:null-beat>)
+    (D#/Eb 3 #<procedure:null-beat>)
 
 
 
@@ -170,58 +70,38 @@ State:
   Progression: (i bVI iv ii-dim V i)
   Value: 0
   Voicing: 
-    (C 5 #<procedure:null-beat>)
+    (D#/Eb 5 #<procedure:null-beat>)
+    (D#/Eb 5 #<procedure:null-beat>)
     (G 4 #<procedure:null-beat>)
-    (E 4 #<procedure:null-beat>)
     (C 3 #<procedure:null-beat>)
 
 
 State:
   Progression: (i bVI iv ii-dim V i)
-  Value: 40
+  Value: 45
   Voicing: 
-    (A 5 #<procedure:null-beat>)
-    (E 5 #<procedure:null-beat>)
-    (C 3 #<procedure:null-beat>)
-    (A 2 #<procedure:null-beat>)
-
-
-State:
-  Progression: (i bVI iv ii-dim V i)
-  Value: 25
-  Voicing: 
-    (G 5 #<procedure:null-beat>)
+    (D#/Eb 5 #<procedure:null-beat>)
     (C 5 #<procedure:null-beat>)
-    (E 3 #<procedure:null-beat>)
-    (C 3 #<procedure:null-beat>)
+    (G#/Ab 3 #<procedure:null-beat>)
+    (G#/Ab 3 #<procedure:null-beat>)
 
 
 State:
   Progression: (i bVI iv ii-dim V i)
   Value: 40
   Voicing: 
-    (E 5 #<procedure:null-beat>)
-    (E 4 #<procedure:null-beat>)
-    (A 3 #<procedure:null-beat>)
-    (C 3 #<procedure:null-beat>)
-
-
-State:
-  Progression: (i bVI iv ii-dim V i)
-  Value: 40
-  Voicing: 
-    (F 5 #<procedure:null-beat>)
-    (A 4 #<procedure:null-beat>)
+    (G#/Ab 5 #<procedure:null-beat>)
+    (G#/Ab 4 #<procedure:null-beat>)
     (C 4 #<procedure:null-beat>)
-    (F 2 #<procedure:null-beat>)
+    (F 3 #<procedure:null-beat>)
 
 
 State:
   Progression: (i bVI iv ii-dim V i)
   Value: 40
   Voicing: 
-    (A 4 #<procedure:null-beat>)
-    (A 4 #<procedure:null-beat>)
+    (G#/Ab 4 #<procedure:null-beat>)
+    (F 3 #<procedure:null-beat>)
     (D 3 #<procedure:null-beat>)
     (F 2 #<procedure:null-beat>)
 
@@ -230,99 +110,19 @@ State:
   Progression: (i bVI iv ii-dim V i)
   Value: 45
   Voicing: 
-    (G 5 #<procedure:null-beat>)
-    (D 5 #<procedure:null-beat>)
-    (G 3 #<procedure:null-beat>)
-    (B 2 #<procedure:null-beat>)
-
-
-State:
-  Progression: (i bVI iv ii-dim V i)
-  Value: 45
-  Voicing: 
-    (C 6 #<procedure:null-beat>)
-    (E 5 #<procedure:null-beat>)
-    (G 3 #<procedure:null-beat>)
-    (G 2 #<procedure:null-beat>)
-
-
-State:
-  Progression: (i bVI iv ii-dim V i)
-  Value: 45
-  Voicing: 
-    (E 5 #<procedure:null-beat>)
-    (G 4 #<procedure:null-beat>)
-    (C 3 #<procedure:null-beat>)
-    (C 3 #<procedure:null-beat>)
-
-
-State:
-  Progression: (i bVI iv ii-dim V i)
-  Value: 40
-  Voicing: 
-    (E 5 #<procedure:null-beat>)
-    (A 4 #<procedure:null-beat>)
-    (E 4 #<procedure:null-beat>)
-    (C 3 #<procedure:null-beat>)
-
-
-State:
-  Progression: (i bVI iv ii-dim V i)
-  Value: 45
-  Voicing: 
-    (G 4 #<procedure:null-beat>)
-    (C 4 #<procedure:null-beat>)
-    (E 3 #<procedure:null-beat>)
-    (C 3 #<procedure:null-beat>)
-
-
-State:
-  Progression: (i bVI iv ii-dim V i)
-  Value: 15
-  Voicing: 
-    (A 4 #<procedure:null-beat>)
-    (C 4 #<procedure:null-beat>)
-    (E 3 #<procedure:null-beat>)
-    (C 3 #<procedure:null-beat>)
-
-
-State:
-  Progression: (i bVI iv ii-dim V i)
-  Value: 35
-  Voicing: 
-    (F 5 #<procedure:null-beat>)
-    (A 4 #<procedure:null-beat>)
-    (C 4 #<procedure:null-beat>)
-    (A 2 #<procedure:null-beat>)
-
-
-State:
-  Progression: (i bVI iv ii-dim V i)
-  Value: 40
-  Voicing: 
-    (F 5 #<procedure:null-beat>)
-    (D 4 #<procedure:null-beat>)
-    (D 4 #<procedure:null-beat>)
-    (A 3 #<procedure:null-beat>)
-
-
-State:
-  Progression: (i bVI iv ii-dim V i)
-  Value: 40
-  Voicing: 
+    (B 4 #<procedure:null-beat>)
     (G 4 #<procedure:null-beat>)
     (D 4 #<procedure:null-beat>)
     (B 3 #<procedure:null-beat>)
-    (G 3 #<procedure:null-beat>)
 
 
 State:
   Progression: (i bVI iv ii-dim V i)
   Value: 0
   Voicing: 
-    (G 5 #<procedure:null-beat>)
-    (E 5 #<procedure:null-beat>)
-    (C 5 #<procedure:null-beat>)
+    (C 6 #<procedure:null-beat>)
+    (G 3 #<procedure:null-beat>)
+    (D#/Eb 3 #<procedure:null-beat>)
     (C 3 #<procedure:null-beat>)
 
 
@@ -333,159 +133,59 @@ State:
   Progression: (i bVI iv ii-dim V i)
   Value: 0
   Voicing: 
-    (C 5 #<procedure:null-beat>)
+    (D#/Eb 5 #<procedure:null-beat>)
+    (D#/Eb 5 #<procedure:null-beat>)
     (G 4 #<procedure:null-beat>)
-    (E 4 #<procedure:null-beat>)
     (C 3 #<procedure:null-beat>)
 
 
 State:
   Progression: (i bVI iv ii-dim V i)
-  Value: 490
+  Value: 495
   Voicing: 
-    (A 5 #<procedure:null-beat>)
-    (E 5 #<procedure:null-beat>)
-    (C 3 #<procedure:null-beat>)
-    (A 2 #<procedure:null-beat>)
-
-
-State:
-  Progression: (i bVI iv ii-dim V i)
-  Value: 25
-  Voicing: 
-    (G 5 #<procedure:null-beat>)
+    (D#/Eb 5 #<procedure:null-beat>)
     (C 5 #<procedure:null-beat>)
-    (E 3 #<procedure:null-beat>)
-    (C 3 #<procedure:null-beat>)
+    (G#/Ab 3 #<procedure:null-beat>)
+    (G#/Ab 3 #<procedure:null-beat>)
 
 
 State:
   Progression: (i bVI iv ii-dim V i)
   Value: 490
   Voicing: 
-    (E 5 #<procedure:null-beat>)
-    (E 4 #<procedure:null-beat>)
-    (A 3 #<procedure:null-beat>)
-    (C 3 #<procedure:null-beat>)
-
-
-State:
-  Progression: (i bVI iv ii-dim V i)
-  Value: 490
-  Voicing: 
-    (F 5 #<procedure:null-beat>)
-    (A 4 #<procedure:null-beat>)
+    (G#/Ab 5 #<procedure:null-beat>)
+    (G#/Ab 4 #<procedure:null-beat>)
     (C 4 #<procedure:null-beat>)
-    (F 2 #<procedure:null-beat>)
+    (F 3 #<procedure:null-beat>)
 
 
 State:
   Progression: (i bVI iv ii-dim V i)
   Value: 490
   Voicing: 
-    (A 4 #<procedure:null-beat>)
-    (A 4 #<procedure:null-beat>)
+    (G#/Ab 4 #<procedure:null-beat>)
+    (F 3 #<procedure:null-beat>)
     (D 3 #<procedure:null-beat>)
     (F 2 #<procedure:null-beat>)
 
 
 State:
   Progression: (i bVI iv ii-dim V i)
-  Value: 490
+  Value: 495
   Voicing: 
     (B 4 #<procedure:null-beat>)
     (G 4 #<procedure:null-beat>)
     (D 4 #<procedure:null-beat>)
-    (D 3 #<procedure:null-beat>)
-
-
-State:
-  Progression: (i bVI iv ii-dim V i)
-  Value: 490
-  Voicing: 
-    (G 4 #<procedure:null-beat>)
-    (E 4 #<procedure:null-beat>)
-    (G 3 #<procedure:null-beat>)
-    (C 3 #<procedure:null-beat>)
-
-
-State:
-  Progression: (i bVI iv ii-dim V i)
-  Value: 490
-  Voicing: 
-    (E 5 #<procedure:null-beat>)
-    (E 5 #<procedure:null-beat>)
-    (C 3 #<procedure:null-beat>)
-    (G 2 #<procedure:null-beat>)
-
-
-State:
-  Progression: (i bVI iv ii-dim V i)
-  Value: 490
-  Voicing: 
-    (E 5 #<procedure:null-beat>)
-    (A 4 #<procedure:null-beat>)
-    (E 4 #<procedure:null-beat>)
-    (C 3 #<procedure:null-beat>)
-
-
-State:
-  Progression: (i bVI iv ii-dim V i)
-  Value: 490
-  Voicing: 
-    (G 5 #<procedure:null-beat>)
-    (C 5 #<procedure:null-beat>)
-    (E 4 #<procedure:null-beat>)
-    (G 3 #<procedure:null-beat>)
-
-
-State:
-  Progression: (i bVI iv ii-dim V i)
-  Value: 395
-  Voicing: 
-    (A 4 #<procedure:null-beat>)
-    (C 4 #<procedure:null-beat>)
-    (E 3 #<procedure:null-beat>)
-    (C 3 #<procedure:null-beat>)
-
-
-State:
-  Progression: (i bVI iv ii-dim V i)
-  Value: 485
-  Voicing: 
-    (F 5 #<procedure:null-beat>)
-    (A 4 #<procedure:null-beat>)
-    (C 4 #<procedure:null-beat>)
-    (A 2 #<procedure:null-beat>)
-
-
-State:
-  Progression: (i bVI iv ii-dim V i)
-  Value: 490
-  Voicing: 
-    (F 5 #<procedure:null-beat>)
-    (D 4 #<procedure:null-beat>)
-    (D 4 #<procedure:null-beat>)
-    (A 3 #<procedure:null-beat>)
-
-
-State:
-  Progression: (i bVI iv ii-dim V i)
-  Value: 490
-  Voicing: 
-    (G 4 #<procedure:null-beat>)
-    (D 4 #<procedure:null-beat>)
     (B 3 #<procedure:null-beat>)
-    (G 3 #<procedure:null-beat>)
 
 
 State:
   Progression: (i bVI iv ii-dim V i)
   Value: 0
   Voicing: 
-    (G 5 #<procedure:null-beat>)
-    (E 5 #<procedure:null-beat>)
-    (C 5 #<procedure:null-beat>)
+    (C 6 #<procedure:null-beat>)
+    (G 3 #<procedure:null-beat>)
+    (D#/Eb 3 #<procedure:null-beat>)
     (C 3 #<procedure:null-beat>)
 
 
@@ -496,159 +196,59 @@ State:
   Progression: (i bVI iv ii-dim V i)
   Value: 0
   Voicing: 
-    (C 5 #<procedure:null-beat>)
+    (D#/Eb 5 #<procedure:null-beat>)
+    (D#/Eb 5 #<procedure:null-beat>)
     (G 4 #<procedure:null-beat>)
-    (E 4 #<procedure:null-beat>)
     (C 3 #<procedure:null-beat>)
 
 
 State:
   Progression: (i bVI iv ii-dim V i)
-  Value: 4990
+  Value: 4995
   Voicing: 
-    (A 5 #<procedure:null-beat>)
-    (E 5 #<procedure:null-beat>)
-    (C 3 #<procedure:null-beat>)
-    (A 2 #<procedure:null-beat>)
-
-
-State:
-  Progression: (i bVI iv ii-dim V i)
-  Value: 25
-  Voicing: 
-    (G 5 #<procedure:null-beat>)
+    (D#/Eb 5 #<procedure:null-beat>)
     (C 5 #<procedure:null-beat>)
-    (E 3 #<procedure:null-beat>)
-    (C 3 #<procedure:null-beat>)
+    (G#/Ab 3 #<procedure:null-beat>)
+    (G#/Ab 3 #<procedure:null-beat>)
 
 
 State:
   Progression: (i bVI iv ii-dim V i)
   Value: 4990
   Voicing: 
-    (E 5 #<procedure:null-beat>)
-    (E 4 #<procedure:null-beat>)
-    (A 3 #<procedure:null-beat>)
-    (C 3 #<procedure:null-beat>)
-
-
-State:
-  Progression: (i bVI iv ii-dim V i)
-  Value: 4990
-  Voicing: 
-    (F 5 #<procedure:null-beat>)
-    (A 4 #<procedure:null-beat>)
+    (G#/Ab 5 #<procedure:null-beat>)
+    (G#/Ab 4 #<procedure:null-beat>)
     (C 4 #<procedure:null-beat>)
-    (F 2 #<procedure:null-beat>)
+    (F 3 #<procedure:null-beat>)
 
 
 State:
   Progression: (i bVI iv ii-dim V i)
   Value: 4990
   Voicing: 
-    (A 4 #<procedure:null-beat>)
-    (A 4 #<procedure:null-beat>)
+    (G#/Ab 4 #<procedure:null-beat>)
+    (F 3 #<procedure:null-beat>)
     (D 3 #<procedure:null-beat>)
     (F 2 #<procedure:null-beat>)
 
 
 State:
   Progression: (i bVI iv ii-dim V i)
-  Value: 4990
+  Value: 4995
   Voicing: 
     (B 4 #<procedure:null-beat>)
     (G 4 #<procedure:null-beat>)
     (D 4 #<procedure:null-beat>)
-    (D 3 #<procedure:null-beat>)
-
-
-State:
-  Progression: (i bVI iv ii-dim V i)
-  Value: 4990
-  Voicing: 
-    (G 4 #<procedure:null-beat>)
-    (E 4 #<procedure:null-beat>)
-    (G 3 #<procedure:null-beat>)
-    (C 3 #<procedure:null-beat>)
-
-
-State:
-  Progression: (i bVI iv ii-dim V i)
-  Value: 4990
-  Voicing: 
-    (E 5 #<procedure:null-beat>)
-    (E 5 #<procedure:null-beat>)
-    (C 3 #<procedure:null-beat>)
-    (G 2 #<procedure:null-beat>)
-
-
-State:
-  Progression: (i bVI iv ii-dim V i)
-  Value: 4990
-  Voicing: 
-    (E 5 #<procedure:null-beat>)
-    (A 4 #<procedure:null-beat>)
-    (E 4 #<procedure:null-beat>)
-    (C 3 #<procedure:null-beat>)
-
-
-State:
-  Progression: (i bVI iv ii-dim V i)
-  Value: 4990
-  Voicing: 
-    (G 5 #<procedure:null-beat>)
-    (C 5 #<procedure:null-beat>)
-    (E 4 #<procedure:null-beat>)
-    (G 3 #<procedure:null-beat>)
-
-
-State:
-  Progression: (i bVI iv ii-dim V i)
-  Value: 4895
-  Voicing: 
-    (A 4 #<procedure:null-beat>)
-    (C 4 #<procedure:null-beat>)
-    (E 3 #<procedure:null-beat>)
-    (C 3 #<procedure:null-beat>)
-
-
-State:
-  Progression: (i bVI iv ii-dim V i)
-  Value: 4985
-  Voicing: 
-    (F 5 #<procedure:null-beat>)
-    (A 4 #<procedure:null-beat>)
-    (C 4 #<procedure:null-beat>)
-    (A 2 #<procedure:null-beat>)
-
-
-State:
-  Progression: (i bVI iv ii-dim V i)
-  Value: 4990
-  Voicing: 
-    (F 5 #<procedure:null-beat>)
-    (D 4 #<procedure:null-beat>)
-    (D 4 #<procedure:null-beat>)
-    (A 3 #<procedure:null-beat>)
-
-
-State:
-  Progression: (i bVI iv ii-dim V i)
-  Value: 4990
-  Voicing: 
-    (G 4 #<procedure:null-beat>)
-    (D 4 #<procedure:null-beat>)
     (B 3 #<procedure:null-beat>)
-    (G 3 #<procedure:null-beat>)
 
 
 State:
   Progression: (i bVI iv ii-dim V i)
   Value: 0
   Voicing: 
-    (G 5 #<procedure:null-beat>)
-    (E 5 #<procedure:null-beat>)
-    (C 5 #<procedure:null-beat>)
+    (C 6 #<procedure:null-beat>)
+    (G 3 #<procedure:null-beat>)
+    (D#/Eb 3 #<procedure:null-beat>)
     (C 3 #<procedure:null-beat>)
 
 

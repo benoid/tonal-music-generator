@@ -154,7 +154,7 @@
                             )))
                       (apply cartesian-product parts-valid-note-list)))])
         (populate-helper (cdr sub-progression) key list-of-part-ranges (cons voicing-group list-of-voicing-groups)))))
-  (populate-helper (reverse chord-progression) key list-of-part-ranges '()))
+  (populate-helper (reverse progression) key list-of-part-ranges '()))
 
 ;; roman numerals represent functional harmony
 (define chord-progression

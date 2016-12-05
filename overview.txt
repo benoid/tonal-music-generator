@@ -21,16 +21,23 @@
                given a harmony
              collaborated on state space population
              collaborated on state space printing
+
              Checkpoint 2 Update:
                states store info about sequential voicings
                state comparison functions for use in policy search tree
                example state creation
-               
+
+             Final Update:
+               states no longer store info about sequential voicings, 
+                 as the state space was too big to hold in memory
+               commented out state comparison functions for use in 
+                 policy search tree
 
     * mdp-policy.rkt
        Authors: Brian Chiang and David Benoit
        Description: Provide a representation of a Markovian
-                    policy. 
+                    policy. We ended reworking our algorithm,
+                    and this particular is no longer used.
        Individual Contributions:
          - Brian
              policy-contains
@@ -40,6 +47,24 @@
              policy request action
              example policy creation
              collaborated on policy representation
+    * mdp-reward.rkt
+        Author: David Benoit
+        Description: Provide rewards and penalties based on
+                     partial musical analysis
+         - convolution matrices
+         - musical analysis
+         - reward function
+    *mdp-main.rkt
+       Authors: David Benoit and Brian Chaing
+       Description: Implement Markov Decision Process on 
+                    Musical State Space    
+         - Brian Chiang
+             system trials and output
+         - David Benoit
+           - value iteration function
+           - audio output of best path
+           
+             
 
 
   Files from other repositories used by this project,
