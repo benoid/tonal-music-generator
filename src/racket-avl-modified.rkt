@@ -1,3 +1,5 @@
+;; NOTE: This is file is no longer used in the project, and will be removed.
+
 ;; This is a modified version of mordae's racket-avl library, 
 ;; available at https://github.com/mordae/racket-avl
 ;; It is available under the same terms as racket 
