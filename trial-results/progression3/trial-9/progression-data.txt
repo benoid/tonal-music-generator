@@ -1,0 +1,104 @@
+Running Markov System Trial
+
+Chord Progression:(I V I)
+Best state path after 0 value iterations: 
+
+State:
+  Progression: (I V I)
+  Value: 0
+  Voicing: 
+    (G 5 #<procedure:null-beat>)
+    (E 5 #<procedure:null-beat>)
+    (C 5 #<procedure:null-beat>)
+    (E 3 #<procedure:null-beat>)
+State:
+  Progression: (I V I)
+  Value: 0
+  Voicing: 
+    (G 4 #<procedure:null-beat>)
+    (B 3 #<procedure:null-beat>)
+    (D 3 #<procedure:null-beat>)
+    (D 3 #<procedure:null-beat>)
+State:
+  Progression: (I V I)
+  Value: 0
+  Voicing: 
+    (C 6 #<procedure:null-beat>)
+    (E 5 #<procedure:null-beat>)
+    (G 4 #<procedure:null-beat>)
+    (E 2 #<procedure:null-beat>)
+Best state path after 10 value iterations: 
+State:
+  Progression: (I V I)
+  Value: 0
+  Voicing: 
+    (G 5 #<procedure:null-beat>)
+    (E 5 #<procedure:null-beat>)
+    (E 4 #<procedure:null-beat>)
+    (C 4 #<procedure:null-beat>)
+State:
+  Progression: (I V I)
+  Value: 45
+  Voicing: 
+    (B 5 #<procedure:null-beat>)
+    (D 4 #<procedure:null-beat>)
+    (B 3 #<procedure:null-beat>)
+    (G 2 #<procedure:null-beat>)
+State:
+  Progression: (I V I)
+  Value: 0
+  Voicing: 
+    (E 5 #<procedure:null-beat>)
+    (G 3 #<procedure:null-beat>)
+    (G 3 #<procedure:null-beat>)
+    (C 3 #<procedure:null-beat>)
+Best state path after 100 value iterations: 
+State:
+  Progression: (I V I)
+  Value: 0
+  Voicing: 
+    (G 5 #<procedure:null-beat>)
+    (E 5 #<procedure:null-beat>)
+    (E 4 #<procedure:null-beat>)
+    (C 4 #<procedure:null-beat>)
+State:
+  Progression: (I V I)
+  Value: 495
+  Voicing: 
+    (B 5 #<procedure:null-beat>)
+    (D 4 #<procedure:null-beat>)
+    (B 3 #<procedure:null-beat>)
+    (G 2 #<procedure:null-beat>)
+State:
+  Progression: (I V I)
+  Value: 0
+  Voicing: 
+    (E 5 #<procedure:null-beat>)
+    (G 3 #<procedure:null-beat>)
+    (G 3 #<procedure:null-beat>)
+    (C 3 #<procedure:null-beat>)
+Best state path after 1000 value iterations: 
+State:
+  Progression: (I V I)
+  Value: 0
+  Voicing: 
+    (G 5 #<procedure:null-beat>)
+    (E 5 #<procedure:null-beat>)
+    (E 4 #<procedure:null-beat>)
+    (C 4 #<procedure:null-beat>)
+State:
+  Progression: (I V I)
+  Value: 4995
+  Voicing: 
+    (B 5 #<procedure:null-beat>)
+    (D 4 #<procedure:null-beat>)
+    (B 3 #<procedure:null-beat>)
+    (G 2 #<procedure:null-beat>)
+State:
+  Progression: (I V I)
+  Value: 0
+  Voicing: 
+    (E 5 #<procedure:null-beat>)
+    (G 3 #<procedure:null-beat>)
+    (G 3 #<procedure:null-beat>)
+    (C 3 #<procedure:null-beat>)
