@@ -1,3 +1,5 @@
+;; NOTE: This file is no longer used in the project.  It will be removed.
+
 #lang racket
 
 (require "mdp-state.rkt"

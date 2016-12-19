@@ -1,0 +1,13 @@
+Each subdirectory of this folder contains 10 trials produced by this system.  Each trial folder contains five files.
+
+excerpt-v0.wav - Output of system after 0 value iterations
+excerpt-v10.wav - Output of system after 10 value iterations
+excerpt-v100.wav - Output of system after 100 value iterations
+excerpt-v1000.wav - Output of system after 1000 value iterations
+
+progression-data.txt - Textual output of all trials
+
+Note: Most trials converge before 100 value iterations.  
+      In these cases, the trial will contain identical wav 
+      files for all excerpts whose number of value iterations 
+      is greater the convergence point.
