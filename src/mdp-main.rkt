@@ -2,7 +2,7 @@
 
 (require "mdp-state.rkt"
 	 "mdp-reward.rkt"
-	 "rsound-composer/composer.rkt")
+	 "../rsound-composer/composer.rkt")
 
 (provide (all-defined-out)
 	 (all-from-out 
@@ -58,6 +58,8 @@
 						   (quarter-note (note-letter n) (note-octave n)))
 						 (state-voicing st))))
 				   path-list)))))
+(define (instrument-part->rsound ip #:tempo [t 120])
+  (rs-append* (instrument-part->rsound-list #:tempo t ip)))
 
 (define (export-markov-path path-list filename)
   (rs-write

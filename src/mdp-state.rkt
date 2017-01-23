@@ -2,11 +2,11 @@
 
 ;; needed libraries
 (require 
-  "rsound-composer/define-argcheck.rkt"
-  "rsound-composer/composer.rkt")
+  "../rsound-composer/define-argcheck.rkt"
+  "../rsound-composer/composer.rkt")
 
 (provide (all-defined-out)
-         (all-from-out "rsound-composer/composer.rkt"))
+         (all-from-out "../rsound-composer/composer.rkt"))
 
 
 ;; state representation that contains a chord voicing, harmonic progression
