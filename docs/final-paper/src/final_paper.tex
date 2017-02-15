@@ -50,51 +50,72 @@ breaklinks=true,
 
 \keywords{Markov, Decision, Tonal, Music} 
 
-\category{H.5.2}{Information Interfaces and Presentation}{Miscellaneous}[Optional sub-category]
-
 \section{Introduction}
 
 	The objective of this project was to explore applications of Markov Decision Process (MDP) to the generation of tonal music.  The system creates a Markovian state space based on a user-supplied harmonic progression, and applies an algorithm based on MDP and value iteration.  The intended result is for the system to approximate the most suitable voicing of each chord in the progression, such that the created musical excerpt contains smooth melodic lines which interact with each other correctly based on a Schenkerian musical analysis of the excerpt.
 
 \subsection{Definitions}
 Definitions of terms used in this paper.
-(Did not have time to finish these for the deadline)
+Markov Decision Process (MDP) -  A mathematical model for approximating the best path through set of states.
 
-MDP
+MDP State - A structural representation of state in an MDP model which consists of the state to be modeled, and a value representing the state's suitability toward reaching the MDP model's goal.
 
-MDP State
+MDP State Space - The set of all states in an MDP, arranged by adjacency to other states.
 
-MDP State Space
+Factored MDP - An approximation of an MDP computations of the values of states are carried out on groups of states rather than individual states.  Factored MDPs are employed when state spaces are so large that they are cumbersome or impossible for computers to work with.
 
-Factored MDP
+Value Iteration - An iterative process over a state space which updates an MDP state's value with a reward or penalty based on the state's suitability.
 
-Value Iteration
+Music Theory - The formalization of implicit rules by which composers have written music throughout history.
 
-Music Theory
 
-Schenkerian Musical Analysis/Theory - A commonly used system for analyzing music quality devised by Heinrich Schenker
+Schenkerian Musical Analysis/Theory - A commonly used system for analyzing music quality devised by Heinrich Schenker.
 
-Harmony/Chord - a general group of notes which sound good together.  
+Harmony/Chord - A general group of notes which sound good together.  
 
-Harmonic Progression - a sequence of harmonies
+Harmonic Progression - A sequence of harmonies.
 
-Chord Voicing - A specific subset of all possible notes in a harmony
+Chord Voicing - A specific subset of all possible notes in a harmony.
 
-Voicing Progression - a sequence of chord voicings
+Voicing Progression - A sequence of chord voicings.
 
-Melodic Lines - a melody played by a particular voice or instrument in an excerpt
+Melodic Lines - A melody played by a particular voice or instrument in an excerpt.
 
-Stepwise Motion - occurs when two notes are a single letter name apart.
+Counterpoint - The interaction of melodic motion between two voices or instruments.
 
-Melodic Leaps - occur when two notes are more than a single letter name apart.
+Stepwise Motion - Occurs when two notes are a single letter name apart.
 
-Tonic - The tonal center of a key, progression, or chord.  For example the note "C" is the tonic of the key of "C major"
+Melodic Leaps - Occur when two notes are more than a single letter name apart.
+
+Tonic - The tonal center of a key, progression, or chord.  For example the note "C" is the tonic of the key of "C major".
 
 Convolution Kernel/Matrix - An AI technique used in graph/matrix calculation.
 
 \section{Project Description}
-The state space comprised of all possible arrangements of voicings in a chord progression can be represented as the cross product of the sets containing ----.
+When given a set of chord symbols representing a harmonic progression, the tonal music generation system's goal is to approximately determine the most compatible voicing for each chord in the progression.  The more compatible the chord voicings in the progression are with one another, the more pleasant the generated excerpt will sound to the ear.  Compatibility of voicings with one another is determined by analysis of the melodic lines resulting from the sequential playing of chords in a progression. 
 
+To determine the approximate best set of chord voicings for a specified progression of symbols via Markov Decision Process, the first action the system must perform is to enumerate the state space. The state space (Q) of all possible voicings of a given progression can be represented by the tuple \{C, V , R\}, where:
+\\	C = the sequential list of chords in the progression
+\\	V = the set of voices/instruments 
+\\	R = C x V = the set of notes per chord which are 
+	            playable given the range of each 
+	            voice in V
+\\	Q = R x R = the set of possible relationships of each 
+             	chord in the progression to each other chord	
+	
+Th reason that Q is equal to R x R is that the entire sequence of chords matters in a harmonic progression.  The suitability of each chord is determined not only by its immediate neighbors, but by its relation to the entire progression.  Such a large state space is difficult to compute because Q is the cartesian-product of four sets, and its size grows on the order of magnitude O($(CV)^2$).  Since the state space grows quadratically as either C or V grows, the amount of computing power required to compute the best chord voicings in a progression quickly becomes unfeasible for most computers.
+
+As such, the tonal music generation system is unable to populate the entire state space which would be required for a traditional MDP algorithim.  Instead, the system attempts to factor the state space by grouping similar subsets of progressions of voicings together, and inferring their compatibility with other subsets as a group.  The resulting factored state space ($Q^1$) can be represented as $Q^1$ = R = C x V, and the factored state space grows on the order of magnitude O(CV), which is linear growth as either C or V grows.  To create better space constraints, the program limits V to exactly 4 voices, which is the most common number of voices in academic chorale style writing.  Therefore, the final, optimized state space of the system grows on the order of magnitude of O(C), which is linear as the length of the chord progression grows.
+
+Since the factored MDP's state space is \{C x V , V = 4\}, each state corresponds to a single chord voicing.  As such, the tonal music generation system's first action is to populate into memory each possible chord voicing for each chord in the progression.  It factors the voicings into a two-dimensional table, where voicings in the x-direction (rows) progress sequentially corresponding to the harmonic progression, and voicings in the y-direction (columns) are each different voicings of the same chord.  Each voicing is treated as a Markovian State, and is given a value which represents its suitability for the progression.   
+
+All state values are initialized to 0 when the table is created.  Since the table is generated algorithmically, it is shuffled to ensure there are no existing relationships between.  Due to the inherent randomness of shuffling the state space, the system will generate a different voicing progression each time it run, even if supplied the same harmonic progression as input.  
+
+Once the table is constructed, the system begins performing value iteration on each isolated row, treating each as its own progression of chord voicings.  The voicings are given a value based on their suitability to both the harmonic progression, and to the other voicings in the row.  The result is that small groups of adjacent voicings within each row will end up with similar state values, because values are determined partially based on suitability to the surrounding voicings.
+
+Once value iteration has been performed once on each row, the columns in the table are individually sorted such that the states with the highest values ascend to the top of the table, and states with the lowest values descend to the bottom.  Since many small groups of voicings have similar state values based on their suitability to each other, the groups have a tendency to rise together if they are compatible with both each other and the progression as a whole, and fall together if they are incompatible.  
+
+This sequence of value iteration and column sorting is carried out by the system as many times as is specified by the user.  Ultimately, the top row of the table converges to be the approximate best series of chord voicings for the given harmonic progression.  Finally, the system generates an audio recording of the resulting best progression of voicings, and prints out the progression data.  
 
 \subsection{Code}
 This project was implemented using the Racket programming language.  It's musical facilities were built using the RSound-Composer library, developed by David Benoit in parallel with this project.  RSound-Composer is a library which provides a high-level, music-theory based API for Racket's RSound library, including data structures for use in music theory representation, and procedures which perform common operations on musical data.  It also provides automatic scheduling and playback of created music.  RSound is a sound library written by John Clements.
@@ -107,13 +128,13 @@ All of the code which implements the project-specific functionality for Markov D
 This file provides an implementation of Markovian states, state-spaces, and musical state functionality which is specific to this project.
 
 \textit{\textless\#struct\textgreater state: }
-Represents a state.  A state contains a single chord voicing, a reward/penalty value for use in value iteration, and the user supplied harmonic progression.  In retrospect, storing harmonic progression data in every state was unnecessary, and with more time, the code could have been refactored to reduce the system's memory footprint.
+Represents a state.  A state contains a single chord voicing, a reward/penalty value for use in value iteration, and the user supplied harmonic progression.  In retrospect, storing harmonic progression data in every state was unnecessary.
 
 \textit{\textless\#struct\textgreater part-range: }
 Represents the range of notes a voice is able to play.  Stores notes representing the highest and lowest notes that a particular voice has the ability to play.
 
 \textit{\textless\#procedure\textgreater voicing-compare: }
-Legacy function which returns 0 if voicings are equal.  This is no longer used is part of the project.
+Legacy function which returns 0 if voicings are equal.  
 
 
 \textit{\textless\#procedure\textgreater pitch: }
@@ -206,23 +227,54 @@ Would create a shuffled state space, apply value iteration 100 times, and play t
 
 \section{Analysis of Results}
 
-The Markov Decision in Tonal Music system was tested several times using different data sets as input each time.  The resulting output of the system is available to view at:
+The Markov Decision in Tonal Music system was tested several times using different data sets as input each time.  The resulting output of the system, including audio samples, is available  at:
 
 https://github.com/benoid/tonal-music-generator/tree/master/trial-results
 
-The system was minimally successful at learning proper music composition techniques.   Analysis of system output confirms that greater magnitudes of value iteration tend to increase the smoothness of the excerpt's melodic lines when compared to excerpts produced with lesser or no value iteration.  
+Five different harmonic progressions were supplied to the system, and ten trials were performed per progression for a total of 50 trials.  Each trial consists of an audio and textual snapshot of the best progression after zero, ten, one hundred, and one thousand value iterations.  
 
-However, the system is unable to produce excerpts which follow all rules of classical music theory.  Part of the reason for this is that some planned aspects of the reward function were unimplemented due to time constraints.  A more critical issue is that even some aspects of the reward function that were implemented fully are not always learned by the system.  This causes occasional abruptness in the cohesiveness of produced excerpts, despite an overall tendency toward becoming smoother.
+The system was moderately successful at learning better music composition techniques when compared to the randomized voicings of the initial state space, but no musical output of any system trial comes close to passing even the most superficial Schenkerian contrapuntal analysis. 
+
+Therefore, a more qualitative analysis of each individual trial was performed by ear, and the results were recorded at:
+
+https://github.com/benoid/tonal-music-generator/tree/master/trial-results/notes.txt
+
+Analysis of system output confirms that greater magnitudes of value iteration tend to increase the smoothness of the excerpt's melodic lines when compared to excerpts produced with lesser or no value iteration.  
+
+The success of a trial was determined by whether or not it produced a result with one of the following improvements over the original zero-value-iteration result:
+
+1) Smoother, more stepwise melodic lines
+
+2) Melody or Bass ends on the tonic of the key, whereas it originally did not.
+
+3) Bass ends with stepwise motion (Ti->Do or Re->Do) or dominant-tonic motion (Sol->Do) whereas it originally did not
+
+Failure of a trial was determined by the following conditions:
+
+1) Melodic lines become significantly more jagged after value iteration, even if there were some other improvements 
+
+2) There were no tangible improvements to the output after value iteration. 
+
+The success rate based on this criteria was that 86\% of trials were generally successful and showed some tangible improvement after value iteration.  
+
+14\% of trials were generally unsuccessful, producing either no tangible improvement, or producing output which was determined to be worse than before value iteration.  Such a high failure rate is possibly a result of the algorithm's restriction of the state space.  Due to program time and space constraints, the system sacrifices many comparisons which would otherwise be performed in a traditional MDP.
+
+
+When analyzing the number of value iterations performed before the factored MDP converged on an approximate best solution, it was determined that 90\% of trials converged between zero and ten trials, 10\% converged between ten and one-hundred trials, and 0\% converged between one-hundred and one-thousand trials.  The overwhelming tendency to converge early suggests the reward function may have been overly biased to certain features found in the voicing progressions.  
 
 \section{Discussion}
 There were many obstacles to creating this project, the largest of which was managing the size of the state space.  Since specific context is important when determining the suitability of a chord voicing, voicings can not be treated as individual states the way most MDP systems treat them. As such the original design for the project called for each state to contain a current chord voicing, and a list of the sequence of chord voicings leading up to the current voicing.  The issue was that such a state space would have a memory footprint orders of magnitude greater than an average computer could store, and would take an incredibly long time to compute.  
 
-To remedy this problem, the system can not attempt a brute force approach like originally planned.  Instead, chord voicings are treated as individual states, and the state space is factored into harmonic progressions.  When value iteration is run, states are compared to adjacent states in their factored harmonic progressions using a technique based on kernel convolution.  After each iteration of value iteration, the state space is re-factored, grouping states with the highest values together into their own progressions.
+To remedy this problem, the system could not attempt a brute force approach.  Instead, chord voicings are treated as individual states, and the state space is factored into harmonic progressions.  When value iteration is run, states are compared to adjacent states in their factored harmonic progressions using a technique based on kernel convolution.  After each iteration of value iteration, the state space is re-factored, grouping states with the highest values together into their own progressions.
 
 There are some ethical considerations to consider when discussing computer generated music.  Is music still art if it is generated by an algorithm?
 Will the quality of computer composed music surpass the quality of human composed music?  Will render human composers obsolete, crushing an industry?  
 
+
+
 \section{Conclusion}
+
+The Markov Decision in Tonal Music system was ultimately less successful than anticipated, but was mildly successful at learning the rules of music composition and counterpoint.  The large state space of the problem domain could not modeled adequately enough by the system's factored MDP.  In conclusion, Markov Decision Process may not be the most ideal method of modeling tonal music composition.
 
 \section{Acknowledgments}
 The work described in this paper was conducted as part of a Fall 2016 Artificial Intelligence course, taught in the Computer Science department of the University of Massachusetts Lowell by Prof. Fred Martin.
